@@ -1,23 +1,16 @@
-import clsx from "clsx";
-import cn  from "./style.module.scss"
-
-function ManPicCard (props){
-    const { img, text} = props;
+function ManPicCard({ img, text }) {
     return (
-        <div className={clsx(cn["manPicCard"])}>
-
-            <div className={clsx(cn["picSec"])}>
-                <img src={img} className="imgs" />
+        <div className=" flex flex-col gap-[25px] text-[#021321] text-[22px] items-center">
+            <div className="w-full">
+                <img
+                    src={img}
+                    alt={text}
+                    className="w-full object-cover rounded-t-[215px]"
+                />
             </div>
-
-            <p>
-                {text}
-            </p>
-
+            <p className="text-center">{text}</p>
         </div>
-    )
-
-
+    );
 }
 
-export default ManPicCard
+export default ManPicCard;
