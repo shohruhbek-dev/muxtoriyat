@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import cn from "./style.module.scss";
 import { Link } from "react-router-dom";
+import LanguageSelector from "../../Card/languageSelecter";
 
 function Nav() {
     return (
@@ -18,20 +19,20 @@ function Nav() {
 
                     Muxtoriyat tarixi
                 </Link>
-                <li><a href="#">Maqolalar</a></li>
+                <Link to={"/article"}>Maqolalar</Link>
                 <Link to={'/members'}>Hukumat a’zolari</Link>
                 <li><a href="#">Manbalar</a></li>
                 <li><a href="#">Media</a></li>
                 <Link to={"/write"}>
                     Maqola yozish
                 </Link>
+                <div className={clsx(cn['lan'])}>
+                    <ul>
+                        <li><LanguageSelector /></li>
+                        <li><i class="fa-solid fa-user"></i>Kirish</li>
+                    </ul>
+                </div>
             </ul>
-            <div className={clsx(cn['lan'])}>
-                <ul>
-                    <li>Uz</li>
-                    <li><i class="fa-solid fa-user"></i>Kirish</li>
-                </ul>
-            </div>
 
         </header>
     );
