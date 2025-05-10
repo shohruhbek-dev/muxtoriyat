@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
-import { getArticles } from "../../services/source";
+import { getArticles, postLike } from "../../services/source";
 import PaginationComponent from "../../components/Pagination";
 import { FiSearch, FiEye } from "react-icons/fi";
 import { FaHandsClapping } from "react-icons/fa6";
@@ -12,9 +12,8 @@ function Articles() {
   const [pageSize, setPageSize] = useState();
   const [currentPage, setCurrentPage] = useState(0);
   const [limit, setLimit] = useState(8);
-  //   const [selectedUrl, setSelectedUrl] = useState(null);
-  const [likedVideos, setLikedVideos] = useState([]);
-  const [viewedVideos, setViewedVideos] = useState([]);
+  const [likedArticles, setLikedArticles] = useState([]);
+  const [viewedArticles, setViewedArticles] = useState([]);
 
   async function fetchData(currentPage) {
     const result = await getArticles(`page=${currentPage}&size=${limit}`);
@@ -24,42 +23,42 @@ function Articles() {
 
   // Load liked and viewed videos from localStorage on component mount
   useEffect(() => {
-    const storedLikedVideos = localStorage.getItem("likedVideos");
-    if (storedLikedVideos) {
-      setLikedVideos(JSON.parse(storedLikedVideos));
+    const storedLikedArticles = localStorage.getItem("likedArticles");
+    if (storedLikedArticles) {
+      setLikedArticles(JSON.parse(storedLikedArticles));
     }
 
-    const storedViewedVideos = localStorage.getItem("viewedVideos");
-    if (storedViewedVideos) {
-      setViewedVideos(JSON.parse(storedViewedVideos));
+    const storedViewedArticles = localStorage.getItem("viewedArticles");
+    if (storedViewedArticles) {
+      setViewedArticles(JSON.parse(storedViewedArticles));
     }
   }, []);
 
   const handleLike = (id) => {
-    let updatedLikedVideos = [...likedVideos];
+    let updatedLikedArticles = [...likedArticles];
 
-    const videoIndex = updatedLikedVideos.indexOf(id);
+    const articleIndex = updatedLikedArticles.indexOf(id);
 
-    if (videoIndex === -1) {
-      updatedLikedVideos.push(id);
-      //   postLike(id, true);
+    if (articleIndex === -1) {
+      updatedLikedArticles.push(id);
+      postLike(id, true);
     } else {
-      updatedLikedVideos.splice(videoIndex, 1);
-      //   postLike(id, false);
+      updatedLikedArticles.splice(articleIndex, 1);
+      postLike(id, false);
     }
 
-    setLikedVideos(updatedLikedVideos);
-    localStorage.setItem("likedVideos", JSON.stringify(updatedLikedVideos));
+    setLikedArticles(updatedLikedArticles);
+    localStorage.setItem("likedArticles", JSON.stringify(updatedLikedArticles));
 
     fetchData(currentPage);
   };
 
-  const isVideoLiked = (id) => {
-    return likedVideos.includes(id);
+  const isArticleLiked = (id) => {
+    return likedArticles.includes(id);
   };
 
-  const isVideoViewed = (id) => {
-    return viewedVideos.includes(id);
+  const isArticleViewed = (id) => {
+    return viewedArticles.includes(id);
   };
 
   useEffect(() => {
@@ -110,14 +109,14 @@ function Articles() {
             <div className="flex items-center gap-3 text-sm mt-5 text-gray-500">
               <span className="flex items-center gap-1">
                 <IoCalendarOutline />{" "}
-                {new Date(item?.createdAt).toLocaleDateString("en-US", {
+                {new Date(item?.createdDate).toLocaleDateString("en-US", {
                   month: "short",
                   day: "numeric",
                 })}
               </span>
               <button
                 className={`flex items-center gap-1 cursor-pointer border-0 outline-0 bg-transparent ${
-                  isVideoLiked(item.id) ? "text-black" : "text-[#919191]"
+                  isArticleLiked(item.id) ? "text-black" : "text-[#919191]"
                 }`}
                 onClick={(e) => {
                   e.stopPropagation();
@@ -128,7 +127,7 @@ function Articles() {
               </button>
               <span
                 className={`flex items-center gap-1 ${
-                  isVideoViewed(item.id) ? "text-black" : "text-[#919191]"
+                  isArticleViewed(item.id) ? "text-black" : "text-[#919191]"
                 }`}
               >
                 <FiEye /> {item?.views}

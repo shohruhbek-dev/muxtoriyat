@@ -1,26 +1,106 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { getArticleById } from "../../../services/source";
+import { getArticleById, postLike, postView } from "../../../services/source";
 import { FaArrowLeftLong, FaHandsClapping } from "react-icons/fa6";
 import { FiEye } from "react-icons/fi";
 import { useTranslation } from "react-i18next";
 import { IoShareOutline } from "react-icons/io5";
-import userImg from '/src/assets/user.png'
+import userImg from "/src/assets/user.png";
 
 function ArticleDetail() {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const { id } = useParams();
+  const { id: idParam } = useParams();
+  // Convert ID to number immediately
+  const id = parseInt(idParam, 10);
+
   const [data, setData] = useState(null);
+  const [likedArticles, setLikedArticles] = useState([]);
+  const [viewedArticles, setViewedArticles] = useState([]);
+  const [hasLoaded, setHasLoaded] = useState(false);
+
   const fetchData = async () => {
     try {
-      const result = await getArticleById(id);
+      const result = await getArticleById(idParam);
       setData(result);
     } catch (error) {
       console.error("Error fetching article:", error);
     }
   };
+
+  // Load liked and viewed articles from localStorage on component mount
+  useEffect(() => {
+    const storedLikedArticles = localStorage.getItem("likedArticles");
+    if (storedLikedArticles) {
+      setLikedArticles(JSON.parse(storedLikedArticles));
+    }
+
+    const storedViewedArticles = localStorage.getItem("viewedArticles");
+    if (storedViewedArticles) {
+      setViewedArticles(JSON.parse(storedViewedArticles));
+    }
+
+    setHasLoaded(true);
+  }, []);
+
+  // Check if article has been viewed, if not, record the view
+  // Only run this effect when viewedArticles has been loaded from localStorage
+  useEffect(() => {
+    if (!hasLoaded || !id) return;
+
+    const isAlreadyViewed = viewedArticles.includes(id);
+
+    if (!isAlreadyViewed) {
+      // Add to viewed articles list
+      const updatedViewedArticles = [...viewedArticles, id];
+      setViewedArticles(updatedViewedArticles);
+      localStorage.setItem(
+        "viewedArticles",
+        JSON.stringify(updatedViewedArticles)
+      );
+
+      // Send view count to API only when article hasn't been viewed before
+      postView(idParam);
+
+      // Refresh data to get updated view count
+      fetchData();
+    }
+  }, [id, viewedArticles, hasLoaded]);
+
+  const isArticleLiked = (articleId) => {
+    return likedArticles.includes(articleId);
+  };
+
+  const isArticleViewed = (articleId) => {
+    return viewedArticles.includes(articleId);
+  };
+
+  const handleLike = (articleId) => {
+    // Create a copy of the current liked articles array
+    let updatedLikedArticles = [...likedArticles];
+
+    // Check if article is already liked
+    const articleIndex = updatedLikedArticles.indexOf(articleId);
+
+    if (articleIndex === -1) {
+      // Article is not liked, add it to liked articles
+      updatedLikedArticles.push(articleId);
+      postLike(idParam, true);
+    } else {
+      // Article is already liked, remove it from liked articles
+      updatedLikedArticles.splice(articleIndex, 1);
+      postLike(idParam, false);
+    }
+
+    // Update state and localStorage
+    setLikedArticles(updatedLikedArticles);
+    localStorage.setItem("likedArticles", JSON.stringify(updatedLikedArticles));
+
+    // Refresh data to show updated like count
+    fetchData();
+  };
+
   const handleBackFunc = () => {
     navigate(-1); // Navigates to the previous page
   };
@@ -28,7 +108,7 @@ function ArticleDetail() {
   useEffect(() => {
     fetchData();
   }, [id]);
-  console.log(data);
+
   return (
     <div className="container mx-auto w-[95%]">
       {/* go back */}
@@ -69,11 +149,18 @@ function ArticleDetail() {
             <div className="border-t border-b border-[#F2F2F2] flex items-center justify-between py-4 mb-10 mt-5">
               <div className="flex items-center gap-4">
                 <button
-                  className={`flex items-center gap-1 cursor-pointer border-0 outline-0 bg-transparent`}
+                  className={`flex items-center gap-1 cursor-pointer border-0 outline-0 bg-transparent ${
+                    isArticleLiked(id) ? "text-black" : "text-[#919191]"
+                  }`}
+                  onClick={() => handleLike(id)}
                 >
                   <FaHandsClapping /> {data?.likes}
                 </button>
-                <span className={`flex items-center gap-1 `}>
+                <span
+                  className={`flex items-center gap-1 ${
+                    isArticleViewed(id) ? "text-black" : "text-[#919191]"
+                  }`}
+                >
                   <FiEye /> {data?.views}
                 </span>
               </div>
