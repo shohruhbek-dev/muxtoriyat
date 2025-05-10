@@ -14,7 +14,7 @@ function Nav() {
         <ul>
           <Link to={"/"}>Asosiy</Link>
           <Link to={"/history"}>Muxtoriyat tarixi</Link>
-          <Link to={"/article"}>Maqolalar</Link>
+          <Link to={"/articles"}>Maqolalar</Link>
           <Link to={"/members"}>Hukumat a’zolari</Link>
           <li>
             <a href="#">Manbalar</a>

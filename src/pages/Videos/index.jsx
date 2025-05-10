@@ -18,7 +18,7 @@ export default function Videos() {
   const [limit, setLimit] = useState(8);
   const [selectedUrl, setSelectedUrl] = useState(null);
   const [likedVideos, setLikedVideos] = useState([]);
-  const [viewed, setViewed] = useState(false);
+  const [viewedVideos, setViewedVideos] = useState([]);
 
   async function fetchData(currentPage) {
     const result = await getCategoriesVideosData(
@@ -28,36 +28,35 @@ export default function Videos() {
     setPageSize(result.headers["x-total-count"]);
   }
 
-  // Load liked videos from localStorage on component mount
+  // Load liked and viewed videos from localStorage on component mount
   useEffect(() => {
     const storedLikedVideos = localStorage.getItem("likedVideos");
     if (storedLikedVideos) {
       setLikedVideos(JSON.parse(storedLikedVideos));
     }
+
+    const storedViewedVideos = localStorage.getItem("viewedVideos");
+    if (storedViewedVideos) {
+      setViewedVideos(JSON.parse(storedViewedVideos));
+    }
   }, []);
 
   const handleLike = (id) => {
-    // Create a copy of the current liked videos array
     let updatedLikedVideos = [...likedVideos];
 
-    // Check if video is already liked
     const videoIndex = updatedLikedVideos.indexOf(id);
 
     if (videoIndex === -1) {
-      // Video is not liked, add it to liked videos
       updatedLikedVideos.push(id);
       postLike(id, true);
     } else {
-      // Video is already liked, remove it from liked videos
       updatedLikedVideos.splice(videoIndex, 1);
       postLike(id, false);
     }
 
-    // Update state and localStorage
     setLikedVideos(updatedLikedVideos);
     localStorage.setItem("likedVideos", JSON.stringify(updatedLikedVideos));
 
-    // Refresh data to show updated like count
     fetchData(currentPage);
   };
 
@@ -65,15 +64,20 @@ export default function Videos() {
     return likedVideos.includes(id);
   };
 
-  const handleModal = (id) => {
-    const storedViewedStatus = JSON.parse(localStorage.getItem(`viewed-${id}`));
-    if (storedViewedStatus !== null) return;
+  const isVideoViewed = (id) => {
+    return viewedVideos.includes(id);
+  };
 
-    const newViewedStatus = !viewed;
-    setViewed(newViewedStatus);
-    localStorage.setItem(`viewed-${id}`, JSON.stringify(newViewedStatus));
-    postView(id);
-    fetchData(currentPage);
+  const handleModal = (id) => {
+    if (!isVideoViewed(id)) {
+      const updatedViewedVideos = [...viewedVideos, id];
+      setViewedVideos(updatedViewedVideos);
+      localStorage.setItem("viewedVideos", JSON.stringify(updatedViewedVideos));
+
+      postView(id);
+
+      fetchData(currentPage);
+    }
   };
 
   useEffect(() => {
@@ -95,7 +99,9 @@ export default function Videos() {
       </div>
 
       {/* Video ro'yxati */}
-      <h1 className="font-bold text-xl sm:text-3xl text-[#021321]">Video gallereya</h1>
+      <h1 className="font-bold text-xl sm:text-3xl text-[#021321]">
+        Video gallereya
+      </h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
         {data?.map((item, i) => (
           <div key={i} className="group relative cursor-pointer">
@@ -149,7 +155,11 @@ export default function Videos() {
                 >
                   <FaHandsClapping /> {item?.likes}
                 </button>
-                <span className="flex items-center gap-1">
+                <span
+                  className={`flex items-center gap-1 ${
+                    isVideoViewed(item.id) ? "text-black" : "text-[#919191]"
+                  }`}
+                >
                   <FiEye /> {item?.views}
                 </span>
               </div>
