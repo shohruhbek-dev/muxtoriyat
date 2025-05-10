@@ -1,0 +1,95 @@
+.MemberAboutSectionFull {
+    width: 100%;
+    margin: 60px 0;
+    padding: 30px;
+    background: url('../../../assets/memberBack.png') no-repeat center center;
+    background-size: cover;
+
+    .MemberAboutSection1 {
+        position: relative;
+
+
+        .rightleftSec {
+            display: flex;
+            justify-content: flex-end;
+            gap: 20px;
+            padding: 10px;
+
+            i {
+
+                padding: 15px;
+                border-radius: 50%;
+                background-color: #E8E8E81A;
+                color: white;
+            }
+
+        }
+
+        border-top: 1px dotted #E8E8E81A;
+        border-bottom: 1px dotted #E8E8E81A;
+
+        .MemberAboutSection {
+            padding: 0 0 20px 0;
+            display: flex;
+
+            justify-content: space-between;
+            // padding: 20px 0;
+
+            .MemberAbout {
+                display: flex;
+                flex-direction: column;
+                gap: 40px;
+                width: 30%;
+                padding: 50px;
+
+                border-right: 1px dotted #E8E8E81A;
+
+                h1 {
+                    font-family: Poppins;
+                    font-weight: 500;
+                    font-size: 24px;
+                    line-height: 32px;
+                    letter-spacing: 0%;
+                    vertical-align: middle;
+                    color: #00B1EB;
+                }
+
+                p {
+                    font-family: Poppins;
+                    font-weight: 400;
+                    font-size: 18px;
+                    line-height: 26.67px;
+                    letter-spacing: 0%;
+                    vertical-align: middle;
+                    color: #FFFFFF99;
+                }
+
+                img {
+                    width: 100%;
+                }
+
+            }
+
+
+        }
+
+        .textSect {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background-color: #FFFFFF;
+            padding: 10px;
+            border-radius: 0 24px 0 0;
+
+            h1 {
+                font-size: 20px;
+                font-weight: 500;
+                color: #021321;
+
+                span {
+                    color: #00B1EB;
+                }
+            }
+        }
+    }
+}

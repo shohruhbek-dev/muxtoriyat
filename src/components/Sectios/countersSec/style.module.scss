@@ -1,0 +1,37 @@
+.bigcounters {
+    padding: 40px;
+    margin: 40px 0;
+
+    .countersText {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        text-align: start;
+        padding: 40px 0;
+
+        h1 {
+            color: #021321;
+            font-size: 64px;
+            font-weight: 500;
+        }
+
+        p {
+            color: #021321;
+            font-size: 22px;
+            font-weight: 400;
+            padding: 10px 0;
+
+        }
+    }
+
+    .counters {
+        display: flex;
+        justify-content: space-between;
+
+        align-items: center;
+
+        &>div:last-child {
+            border: none;
+        }
+    }
+}

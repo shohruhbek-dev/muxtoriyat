@@ -1,0 +1,21 @@
+.CardBigPic {
+    width: 100%;
+    padding: 0 40px;
+    position: relative;
+    img{
+        width: 100%;
+    }
+    button{
+        position: absolute;
+        bottom: 50px;
+        right: 120px;
+        background-color: white;
+        padding: 14px 20px;
+        border-radius: 30px;
+        font-size: 16px;
+       i{
+        font-size: 16px;
+        padding: 0 10px;
+       }
+    }
+}
