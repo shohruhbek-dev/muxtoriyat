@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import man1 from "../../../assets/man1.png";
@@ -161,9 +162,9 @@ function MembersSec({ heading, subheading, layout = "slider", scrollType = "cont
         <div className="w-full pl-10 pr-10 my-5">
             <div
                 className={`headings flex ${headingLayout === "row" ? "flex-row mt-10 mb-10" : "flex-col"
-                    } justify-between  items-start gap-12`}
+                    } justify-between  items-start gap-5 md:gap-12`}
             >
-                <h1 className="text-[#021321] text-5xl lg:text-6xl">{heading}</h1>
+                <h1 className="text-[#021321] text-2xl md:text-5xl lg:text-6xl">{heading}</h1>
                 <p className={`text-2xl  ${headingLayout === "row" ? "text-right" : "text-left"} text-[#2D2D2D] space-y-2`}>{subheading}</p>
             </div>
 

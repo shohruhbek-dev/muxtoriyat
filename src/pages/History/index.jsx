@@ -10,7 +10,7 @@ import tarix4 from "../../assets/freepik__enhance__36238 2 (3).png"
 function History() {
     return (
         <div className=" history p-[40px]">
-            <h1 className="font-poppins mt-[50px] text-[#021321] font-semibold text-[72px] leading-[100%] tracking-[0%]  align-middle"
+            <h1 className="font-poppins mt-[50px] text-[#021321] font-semibold text-4xl lg:text-[72px] leading-[100%] tracking-[0%]  align-middle"
             >Turkiston <span className="text-[#003561]">muxtoriyati</span> tarixi</h1>
             <p className="font-poppins mt-[30px] mb-[40px] font-normal text-[22.7px]"
             >Oʻzbekiston mustaqillikka erishgach, respublika hayotining barcha jabhalarida tub islohotlar amalga oshirildi va oshirilmoqda. O‘zbek xalqining oʻz taqdirini oʻzi belgilashi milliy tiklanish bilan bog‘liq jarayonlarni chuqur idrok etishda milliy davlat qurilishi tajribasini ilmiy o‘rganilishi, O‘zbekistonni yangilanish va taraqqiyot yo‘lidagi tajribalarni umumlashtirishni taqozo etadi.</p>

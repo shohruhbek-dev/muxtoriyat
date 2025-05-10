@@ -21,4 +21,22 @@
         font-weight: 500;
 
     }
+
+    @media screen and (max-width: '820pz') {
+        span{
+            font-size: 56px;
+        }
+        p{
+            font-size: 28px;
+        }
+    }
+    @media screen and (max-width: '690px') {
+        padding: 20px 0;
+        span{
+            font-size: 42px;
+        }
+        p{
+            font-size: 24px;
+        }
+    }
 }

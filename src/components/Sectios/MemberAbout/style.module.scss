@@ -33,7 +33,7 @@
             display: flex;
 
             justify-content: space-between;
-            // padding: 20px 0;
+
 
             .MemberAbout {
                 display: flex;
@@ -70,6 +70,17 @@
 
             }
 
+            @media (max-width: 1023px) {
+                .MemberAbout {
+                    flex: 0 0 45%; // faqat 2 ta kelsin
+                }
+            }
+
+            @media (max-width: 700px) {
+                .MemberAbout {
+                    flex: 0 0 100%; // faqat 2 ta kelsin
+                }
+            }
 
         }
 
