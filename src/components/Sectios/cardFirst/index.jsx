@@ -1,12 +1,14 @@
 import clsx from "clsx";
-import cn from './style.module.scss'
+import cn from "./style.module.scss";
+import { useTranslation } from "react-i18next";
 
 function CardFirst() {
-    return (
-        <div className={clsx(cn["firstCard"])}>
-            <h1>Erk ista, tik tur, uyg‘on Turkiston!</h1>
-            <p>"Turkiston muxtoriyati – ajdodlarimizning buyuk orzusi, millatning sha'ni va g‘ururi! Biz ozodlik, adolat va taraqqiyot yo‘lida kurashamiz! Erk va hurriyat sari intilgan xalq hech qachon qul bo‘lmaydi! Yashasin mustaqil va muxtor Turkiston!"</p>
-        </div>
-    )
+  const { t } = useTranslation();
+  return (
+    <div className={clsx(cn["firstCard"])}>
+      <h1>{t("cardFirstHeaderText")} </h1>
+      <p>{t("cardFirstSubText")}</p>
+    </div>
+  );
 }
 export default CardFirst;

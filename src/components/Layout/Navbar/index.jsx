@@ -9,13 +9,14 @@ import { IoCloseSharp } from "react-icons/io5";
 import { FaUser } from "react-icons/fa";
 import { IoMdLogOut } from "react-icons/io";
 import { getUserNameFromToken } from "../../../services/user";
+import { useTranslation } from "react-i18next";
 
 function Nav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [showUserMenu, setShowUserMenu] = useState(false);
   const [username, setUsername] = useState("");
-
+  const { t } = useTranslation();
   // Check if user is authenticated
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -67,15 +68,15 @@ function Nav() {
             size={32}
             onClick={() => setIsMenuOpen(false)}
           />
-          <Link to={"/"}>Asosiy</Link>
-          <Link to={"/history"}>Muxtoriyat tarixi</Link>
-          <Link to={"/articles"}>Maqolalar</Link>
-          <Link to={"/members"}>Hukumat a'zolari</Link>
+          <Link to={"/"}> {t("main")} </Link>
+          <Link to={"/history"}> {t("history")} </Link>
+          <Link to={"/articles"}>{t("articles")}</Link>
+          <Link to={"/members"}>{t("govermentMembers")}</Link>
           <li>
-            <a href="#">Manbalar</a>
+            <a href="#">{t("sources")}</a>
           </li>
           <MediaComponent />
-          <Link to={"/write"}>Maqola yozish</Link>
+          <Link to={"/write"}>{t("write")}</Link>
           <div className={clsx(cn["lan"])}>
             <ul className="flex gap-4">
               <li>
@@ -100,14 +101,7 @@ function Nav() {
                         className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                         onClick={() => setShowUserMenu(false)}
                       >
-                        Profil
-                      </Link>
-                      <Link
-                        to="/dashboard"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                        onClick={() => setShowUserMenu(false)}
-                      >
-                        Boshqaruv paneli
+                        {t("profile")}
                       </Link>
                       <button
                         className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer"
@@ -115,7 +109,7 @@ function Nav() {
                       >
                         <div className="flex items-center gap-2">
                           <IoMdLogOut />
-                          Chiqish
+                          {t("logout")}
                         </div>
                       </button>
                     </div>
@@ -124,7 +118,7 @@ function Nav() {
               ) : (
                 <Link to={"/auth"} className="flex items-center gap-2">
                   <FaUser />
-                  Kirish
+                  {t("login")}
                 </Link>
               )}
             </ul>

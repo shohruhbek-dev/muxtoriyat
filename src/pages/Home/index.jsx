@@ -18,11 +18,10 @@ function Home() {
             <SecondTextCard />
             <MemberAboutSection />
             <MembersSec
-                heading="Muxtoriyat hukumati a’zolari"
-                subheading="Hijriy 1336 sana 25 Safari oxiri, Milodiy 1917 yil 27 noyabr — “Shahri Ho’qand”"
+                heading="heading"
+                subheading="subHeading"
                 layout="slider"
                 scrollType="continuous"
-                headingLayout = "column"
             />
 
             <PicsSec />
