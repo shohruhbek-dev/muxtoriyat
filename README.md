@@ -1,6 +1,6 @@
 # Muxtoriyat-UI
 
-
+**demo:** https://diplom-ishi-muxtoriyat-ui.vercel.app/
 
 ## Getting started
 
