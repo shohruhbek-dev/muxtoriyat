@@ -6,10 +6,6 @@
   text-decoration: none;
 }
 
-* button {
-  border: none;
-  background-color: transparent;
-}
 /* In your global CSS or inside Tailwind's custom styles */
 ol.custom-list {
   counter-reset: list-counter;

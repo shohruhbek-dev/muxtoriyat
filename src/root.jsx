@@ -11,6 +11,7 @@ import ArticleDetail from "./components/Card/articleDetailCard";
 import Auth from "./pages/Auth";
 import { useEffect, useState } from "react";
 import WritePage from "./pages/Write";
+import Profile from "./pages/Profile";
 
 function Root() {
   const [token, setToken] = useState();
@@ -48,6 +49,7 @@ function Root() {
               </ProtectedRoute>
             }
           />
+        <Route path="profile" element={<Profile />} />
         </Route>
 
         <Route path="/auth" element={token ? <Navigate to="/" /> : <Auth />} />
