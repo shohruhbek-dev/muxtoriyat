@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import engFlag from "../../../assets/engflag.png";
 import uzFlag from "../../../assets/uzflag.png";
@@ -13,6 +13,7 @@ const languages = [
 const LanguageSelector = () => {
   const { i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef(null);
   const currentLang =
     languages.find((lang) => lang.code === i18n.language) || languages[0];
 
@@ -22,8 +23,21 @@ const LanguageSelector = () => {
     setIsOpen(false);
   };
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
-    <div className="relative w-12 h-auto">
+    <div className="relative w-12 h-auto" ref={dropdownRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center gap-2 w-8 h-8 rounded-md cursor-pointer"
