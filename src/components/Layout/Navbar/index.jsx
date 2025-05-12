@@ -10,6 +10,7 @@ import { FaUser } from "react-icons/fa";
 import { IoMdLogOut } from "react-icons/io";
 import { getUserNameFromToken } from "../../../services/user";
 import { useTranslation } from "react-i18next";
+import logo from "/src/assets/logo.png";
 
 function Nav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -38,7 +39,7 @@ function Nav() {
   return (
     <header className={clsx(cn["header"])}>
       <Link to={"/"}>
-        <img src="/src/assets/logo.png" alt="" />
+        <img src={logo} alt="logo" />
       </Link>
 
       <div
