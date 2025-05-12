@@ -1,7 +1,10 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
+import { FaArrowLeftLong } from "react-icons/fa6";
 import { useLocation, useNavigate } from "react-router-dom";
 
 function MemberDetail() {
+  const { t } = useTranslation();
   const location = useLocation();
   const navigate = useNavigate();
   const { img, text, dob, about } = location.state || {};
@@ -10,9 +13,19 @@ function MemberDetail() {
     navigate("/");
     return null;
   }
+  const handleBackFunc = () => {
+    navigate(-1); // Navigates to the previous page
+  };
   return (
     <>
       <div className="w-full bg-gray-100 rounded-lg  shadow-lg p-6">
+      <button
+        className="flex gap-2 items-center cursor-pointer mb-9 mt-2"
+        onClick={handleBackFunc}
+      >
+        <FaArrowLeftLong size={20} />
+        <span className="text-[18px]">{t("goBack")}</span>
+      </button>
         <div className="flex flex-row items-center  gap-6">
           <img
             src={img}

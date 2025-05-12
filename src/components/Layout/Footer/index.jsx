@@ -2,6 +2,7 @@ import clsx from "clsx";
 
 import cn from "./style.module.scss";
 import { useTranslation } from "react-i18next";
+import logo from "/src/assets/logo.png";
 
 function Footer() {
   const { t } = useTranslation();
@@ -9,7 +10,7 @@ function Footer() {
     <footer className={clsx(cn["footer"])}>
       <div className={clsx(cn["firstSec"])}>
         <div className={clsx(cn["logoSec"])}>
-          <img src="/src/assets/logo.png" alt="" />
+          <img src={logo} alt="logo" />
           <p>{t("footer.text1")}</p>
         </div>
         <div className={clsx(cn["ulSec"])}>

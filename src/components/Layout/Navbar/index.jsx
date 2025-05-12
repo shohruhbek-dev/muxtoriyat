@@ -4,12 +4,13 @@ import { Link } from "react-router-dom";
 import LanguageSelector from "../../Card/languageSelecter";
 import MediaComponent from "../../MediaComponent";
 import { FaBarsStaggered } from "react-icons/fa6";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { IoCloseSharp } from "react-icons/io5";
 import { FaUser } from "react-icons/fa";
 import { IoMdLogOut } from "react-icons/io";
 import { getUserNameFromToken } from "../../../services/user";
 import { useTranslation } from "react-i18next";
+import logo from "/src/assets/logo.png";
 
 function Nav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -17,6 +18,8 @@ function Nav() {
   const [showUserMenu, setShowUserMenu] = useState(false);
   const [username, setUsername] = useState("");
   const { t } = useTranslation();
+
+  const userMenuRef = useRef(null);
   // Check if user is authenticated
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -26,6 +29,19 @@ function Nav() {
       setIsAuthenticated(true);
       setUsername(userName || "Foydalanuvchi");
     }
+  }, []);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (userMenuRef.current && !userMenuRef.current.contains(event.target)) {
+        setShowUserMenu(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
   }, []);
 
   const handleLogout = () => {
@@ -38,7 +54,7 @@ function Nav() {
   return (
     <header className={clsx(cn["header"])}>
       <Link to={"/"}>
-        <img src="/src/assets/logo.png" alt="" />
+        <img src={logo} alt="logo" />
       </Link>
 
       <div
@@ -83,7 +99,8 @@ function Nav() {
                 <LanguageSelector />
               </li>
               {isAuthenticated ? (
-                <li className="relative">
+                <li className="relative" ref={userMenuRef}>
+                  {" "}
                   <button
                     className="flex items-center gap-2 cursor-pointer"
                     onClick={() => setShowUserMenu(!showUserMenu)}
@@ -93,7 +110,6 @@ function Nav() {
                     </div>
                     <span>{username}</span>
                   </button>
-
                   {showUserMenu && (
                     <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50">
                       <Link
