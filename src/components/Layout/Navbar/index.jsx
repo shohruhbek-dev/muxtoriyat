@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import cn from "./style.module.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import LanguageSelector from "../../Card/languageSelecter";
 import MediaComponent from "../../MediaComponent";
 import { FaBarsStaggered } from "react-icons/fa6";
@@ -18,6 +18,7 @@ function Nav() {
   const [showUserMenu, setShowUserMenu] = useState(false);
   const [username, setUsername] = useState("");
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   const userMenuRef = useRef(null);
   // Check if user is authenticated
@@ -49,6 +50,8 @@ function Nav() {
     localStorage.removeItem("username");
     setIsAuthenticated(false);
     setShowUserMenu(false);
+    navigate("/");
+    window.location.reload();
   };
 
   return (

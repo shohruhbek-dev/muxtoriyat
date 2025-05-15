@@ -9,23 +9,17 @@ export const getCategories = async (params) => {
 
 // get methods
 export const getCategoriesVideosData = async (params) => {
-  const response = await api.get(
-    `/view/sources?${params}`
-  );
+  const response = await api.get(`/view/sources?${params}`);
   return response;
 };
 
 export const getCategoriesImagesData = async (params) => {
-  const response = await api.get(
-    `/view/sources?${params}`
-  );
+  const response = await api.get(`/view/sources?${params}`);
   return response.data;
 };
 
 export const getArticles = async (params) => {
-  const response = await api.get(
-    `/view/articles?${params}`
-  );
+  const response = await api.get(`/view/articles?${params}`);
   return response;
 };
 
@@ -34,6 +28,18 @@ export const getArticleById = async (id) => {
   return response.data;
 };
 
+// profile methods
+export const getProfileData = async () => {
+  const token = localStorage.getItem("token");
+
+  const response = await api.get(`/my-profile`, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  return response.data;
+};
 
 // post methods
 export const postView = async (id) => {
@@ -49,4 +55,29 @@ export const postLike = async (id, state) => {
     reactionType: "LIKE",
     state: state,
   });
+};
+
+// post password
+export const postPassword = async (passwordData) => {
+  const token = localStorage.getItem("token");
+
+  const res = await api.post(`/my-profile/reset-password`, passwordData, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  return res;
+};
+
+export const postProfileData = async (data) => {
+  const token = localStorage.getItem("token");
+
+  const response = await api.post(`/my-profile/edit`, data, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  return response;
 };
