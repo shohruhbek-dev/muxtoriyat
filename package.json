@@ -20,6 +20,7 @@
     "i18next-browser-languagedetector": "^8.1.0",
     "i18next-http-backend": "^3.0.2",
     "quill": "^2.0.3",
+    "quill-image-resize-module-react": "^3.0.0",
     "react": "^19.0.0",
     "react-content-loader": "^7.0.2",
     "react-countup": "^6.5.3",
