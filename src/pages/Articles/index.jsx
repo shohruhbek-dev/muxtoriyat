@@ -6,6 +6,7 @@ import { FiSearch, FiEye } from "react-icons/fi";
 import { FaHandsClapping } from "react-icons/fa6";
 import { IoCalendarOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
+import Spinner from "../../components/Spinner";
 
 function Articles() {
   const [data, setData] = useState([]);
@@ -14,8 +15,10 @@ function Articles() {
   const [limit, setLimit] = useState(8);
   const [likedArticles, setLikedArticles] = useState([]);
   const [viewedArticles, setViewedArticles] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   async function fetchData(currentPage) {
+    setLoading(true);
     const result = await getArticles(`page=${currentPage}&size=${limit}`);
     setData(result.data);
     setPageSize(result.headers["x-total-count"]);
@@ -83,6 +86,7 @@ function Articles() {
       <h1 className="font-bold text-xl sm:text-3xl text-[#021321]">
         Maqolalar
       </h1>
+        {loading && <Spinner loading={loading} />}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
         {data?.map((item, i) => (
           <div key={i} className="group relative cursor-pointer">
@@ -136,13 +140,15 @@ function Articles() {
           </div>
         ))}
       </div>
-      <PaginationComponent
-        currentPage={currentPage + 1}
-        totalItems={pageSize}
-        pageSize={limit}
-        onPageChange={(page) => setCurrentPage(page - 1)}
-        onPageSizeChange={(size) => setLimit(size)}
-      />
+      {!loading && (
+        <PaginationComponent
+          currentPage={currentPage + 1}
+          totalItems={pageSize}
+          pageSize={limit}
+          onPageChange={(page) => setCurrentPage(page - 1)}
+          onPageSizeChange={(size) => setLimit(size)}
+        />
+      )}
     </div>
   );
 }
