@@ -81,3 +81,14 @@ export const postProfileData = async (data) => {
   });
   return response;
 };
+
+// post my article
+export const postArticle = async (articleData) => {
+  const token = localStorage.getItem("token");
+  return await api.post(`/my-articles/create`, articleData, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+}

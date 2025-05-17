@@ -1,8 +1,11 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, {useEffect, useRef, useState} from "react";
 import Quill from "quill";
 import "quill/dist/quill.snow.css";
+import {postArticle} from "../../services/source.js";
+import {useTranslation} from "react-i18next";
 
 const WritePage = () => {
+  const {t} = useTranslation();
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [article, setArticle] = useState("");
@@ -17,14 +20,14 @@ const WritePage = () => {
         placeholder: "Maqolani shu yerda yozing...",
         modules: {
           toolbar: [
-            [{ header: [1, 2, 3, false] }],
-            ["bold", "italic", "underline"],
-            ["blockquote", "code-block"],
-            [{ list: "ordered" }, { list: "bullet" }],
-            ["link", "image"],
-            ["clean"],
-            ["formula", "video"],
-            ["color", "background"],
+            [{'header': [1, 2, 3, false]}],
+            [{'font': []}],
+            ['bold', 'italic', 'underline', 'strike'],
+            [{'align': ['center', 'right', 'justify', false]}],
+            [{'color': []}, {'background': []}],
+            [{'list': 'ordered'}, {'list': 'bullet'}],
+            ['link', 'image', 'video'],
+            ['clean']
           ],
         },
       });
@@ -35,53 +38,50 @@ const WritePage = () => {
     }
   }, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log({
       name,
       description,
       article,
     });
+    const articleData = {name: name, description: description, content: article};
+    const response = await postArticle(articleData);
+    console.log(response);
+    if (response.status === 200) {
+      alert(t("ArticleCreated"));
+    } else {
+      alert(t("ArticleNotCreated"));
+    }
   };
 
   return (
     <div className="container mx-auto w-[95%] py-8 px-4">
-      <h1 className="text-3xl font-bold mb-6 text-center">Maqola Yozish</h1>
+      <h1 className="text-3xl font-bold mb-6 text-center">{t("Write Article")}</h1>
 
       <form onSubmit={handleSubmit} className="space-y-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div>
-            <label htmlFor="name" className="block mb-1 font-medium">
-              Nomi
-            </label>
-            <input
+        <div className="flex flex-col gap-4">
+          <input
               type="text"
               id="name"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              placeholder="Maqola nomi"
-              className="w-full border rounded-md p-2 shadow-sm focus:ring focus:ring-blue-200"
+              placeholder={t("Name")}
+              className="w-full p-2 focus:outline-none focus:ring-0"
               required
-            />
-          </div>
-          <div>
-            <label htmlFor="description" className="block mb-1 font-medium">
-              Tavsif
-            </label>
-            <input
+          />
+          <input
               type="text"
               id="description"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              placeholder="Qisqacha tavsif"
-              className="w-full border rounded-md p-2 shadow-sm focus:ring focus:ring-blue-200"
+              placeholder={t("Description")}
+              className="w-full p-2 focus:outline-none focus:ring-0"
               required
-            />
-          </div>
+          />
         </div>
 
         <div>
-          <label className="block mb-1 font-medium">Maqola matni</label>
           <div
             ref={editorRef}
             className="bg-white border rounded-md shadow-sm"
@@ -94,7 +94,7 @@ const WritePage = () => {
             type="submit"
             className="bg-blue-600 text-white px-6 py-2 rounded-md shadow hover:bg-blue-700 transition duration-200"
           >
-            Saqlash
+            {t("Save")}
           </button>
         </div>
       </form>
