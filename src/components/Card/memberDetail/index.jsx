@@ -1,10 +1,12 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import Books from "../books";
+import BackButton from "../../Button/backButton";
 
 function MemberDetail() {
     const location = useLocation();
     const navigate = useNavigate();
-    const { img, text, dob, about } = location.state || {};
+    const { img, text, dob, about, books } = location.state || {};
 
     if (!location.state) {
         navigate("/");
@@ -13,9 +15,9 @@ function MemberDetail() {
     return (
         <>
 
-
-            <div className="w-full bg-gray-100 rounded-lg  shadow-lg p-6">
-                <div className="flex flex-row items-center  gap-6">
+            <BackButton />
+            <div className="memberDetail w-[50%] mt-[20px] m-auto  p-6">
+                <div className="flex flex-row items-center mb-4  gap-6">
                     <img
                         src={img}
                         alt={text}
@@ -28,11 +30,14 @@ function MemberDetail() {
                     </div>
                 </div>
 
-                <p className="mt-6 text-lg text-gray-600 text-center md:text-left">
+                <p className="font-[Source_Serif_Pro] font-normal text-[20px] leading-[32px] tracking-[0px]">
                     {about.split('\n').map((line, idx) => (
                         <p key={idx} className="mb-2">{line}</p>
                     ))}
                 </p>
+                <div>
+                    <Books books={books} />
+                </div>
             </div>
         </>
     );

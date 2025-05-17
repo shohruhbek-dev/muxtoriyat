@@ -13,7 +13,7 @@ function Root() {
         <Route path="/" element={<Home />} />
         <Route path="/history" element={<History />} />
         <Route path="/members" element={<Members />} />
-        <Route path="/member/:id" element={<MemberDetail />} />
+        <Route path="/members/:id" element={<MemberDetail />} />
         <Route path="/article" element={<Articles />} />
         {/* <Route path="/article/:id" element={<Articles />} /> */}
       </Routes>

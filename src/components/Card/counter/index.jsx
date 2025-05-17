@@ -12,7 +12,7 @@ const Counter = (props) => {
                 duration={duration}
                 suffix="+"
             />
-            <p >{text}</p>
+            <p className="font-poppins font-medium text-[32px] leading-[40.73px] tracking-normal text-center align-middle">{text}</p>
         </div>
     );
 };

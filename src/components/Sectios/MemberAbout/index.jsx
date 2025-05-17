@@ -52,9 +52,9 @@ const MemberAboutSection = () => {
                                     case 'img':
                                         return <img key={key} src={member[key]} alt="Member" />;
                                     case 'h1':
-                                        return <h1 key={key}>{member[key]}</h1>;
+                                        return <h1 class="font-[Poppins] font-medium text-[24px] leading-[26.67px] tracking-[0%] align-middle uppercase"  key={key}>{member[key]}</h1>;
                                     case 'p':
-                                        return <p key={key}>{member[key]}</p>;
+                                        return <p class="font-[Poppins] font-normal text-[18px] leading-[26.67px] tracking-[0%] align-middle"  key={key}>{member[key]}</p>;
                                     default:
                                         return null;
                                 }
