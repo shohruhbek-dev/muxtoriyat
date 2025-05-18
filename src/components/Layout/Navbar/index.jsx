@@ -26,9 +26,10 @@ function Nav() {
     const token = localStorage.getItem("token");
 
     if (token) {
-      const userName = getUserNameFromToken();
+      const userInfo = getUserNameFromToken();
       setIsAuthenticated(true);
-      setUsername(userName || "Foydalanuvchi");
+      setUsername(userInfo.sub || "Foydalanuvchi");
+      localStorage.setItem("active", userInfo.active || false);
     }
   }, []);
 
