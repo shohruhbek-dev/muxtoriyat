@@ -15,13 +15,13 @@ function Articles() {
   const [limit, setLimit] = useState(8);
   const [likedArticles, setLikedArticles] = useState([]);
   const [viewedArticles, setViewedArticles] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   async function fetchData(currentPage) {
-    setLoading(true);
     const result = await getArticles(`page=${currentPage}&size=${limit}`);
     setData(result.data);
     setPageSize(result.headers["x-total-count"]);
+    setLoading(false);
   }
 
   // Load liked and viewed videos from localStorage on component mount
@@ -35,7 +35,8 @@ function Articles() {
     if (storedViewedArticles) {
       setViewedArticles(JSON.parse(storedViewedArticles));
     }
-  }, []);
+
+  }, );
 
   const handleLike = (id) => {
     let updatedLikedArticles = [...likedArticles];
@@ -66,7 +67,7 @@ function Articles() {
 
   useEffect(() => {
     fetchData(currentPage);
-  }, [currentPage, limit]);
+  }, [currentPage, limit, loading]);
 
   return (
     <div className="container mx-auto w-[95%] sm:w-full lg:w-[95%] flex gap-4 sm:gap-10 flex-col">
@@ -86,7 +87,7 @@ function Articles() {
       <h1 className="font-bold text-xl sm:text-3xl text-[#021321]">
         Maqolalar
       </h1>
-        {loading && <Spinner loading={loading} />}
+        {loading && <Spinner />}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
         {data?.map((item, i) => (
           <div key={i} className="group relative cursor-pointer">
