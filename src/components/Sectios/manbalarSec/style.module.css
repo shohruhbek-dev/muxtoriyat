@@ -1,0 +1,30 @@
+.manbaalar {
+  display: flex;
+  gap: 50px;
+  justify-content: space-between;
+  padding: 40px;
+  margin: 50px 0;
+}
+.manbaalar h1 {
+  color: #021321;
+  font-size: 64px;
+  font-weight: 500;
+}
+.manbaalar .manbaalarText {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 50px;
+  width: 60%;
+}
+.manbaalar .manbaalarText p {
+  color: #021321;
+  font-size: 22px;
+  font-weight: 400;
+}
+.manbaalar .manbaalarText a {
+  background-color: #021321;
+  color: white;
+  border-radius: 0 24px 0 0;
+  padding: 15px 50px;
+}/*# sourceMappingURL=style.module.css.map */

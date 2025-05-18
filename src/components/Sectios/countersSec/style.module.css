@@ -1,0 +1,45 @@
+.bigcounters {
+  padding: 40px;
+  margin: 40px 0;
+}
+.bigcounters .countersText {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: start;
+  padding: 40px 0;
+}
+.bigcounters .countersText h1 {
+  color: #021321;
+  font-size: 64px;
+  font-weight: 500;
+}
+.bigcounters .countersText p {
+  color: #021321;
+  font-size: 22px;
+  font-weight: 400;
+  padding: 10px 0;
+}
+.bigcounters .counters {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.bigcounters .counters > div:last-child {
+  border: none;
+}
+@media screen and (max-width: 560px) {
+  .bigcounters {
+    padding-top: 0;
+    margin-top: 0;
+  }
+  .bigcounters .countersText {
+    padding: 20px 0;
+  }
+  .bigcounters .countersText h1 {
+    font-size: 32px;
+  }
+  .bigcounters .counters {
+    flex-wrap: wrap;
+  }
+}/*# sourceMappingURL=style.module.css.map */

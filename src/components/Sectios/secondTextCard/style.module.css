@@ -1,0 +1,20 @@
+.SecondTextCard {
+  padding: 100px 40px;
+}
+.SecondTextCard h3 {
+  font-size: 50px;
+}
+.SecondTextCard p {
+  font-size: 24px;
+  font-weight: 300;
+  padding: 24px 0;
+}
+.SecondTextCard p span {
+  font-weight: 400;
+}
+.SecondTextCard i {
+  display: block;
+  text-align: end;
+  font-size: 20px;
+  font-weight: 500;
+}/*# sourceMappingURL=style.module.css.map */
