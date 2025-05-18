@@ -31,7 +31,7 @@ const LanguageSelector = () => {
         <img
           src={currentLang.flag}
           alt={currentLang.code}
-          className="w-12 h-6 object-cover"
+          className="w-12 h-6 object-cover  rounded-[4px]"
           loading="lazy"
         />
       </button>
@@ -50,7 +50,7 @@ const LanguageSelector = () => {
                 alt={lang.code}
                 className="w-8 h-6 object-cover"  
               />
-              <span className="text-sm">{lang.label}</span>
+              <span className="text-sm font-poppins">{lang.label}</span>
             </button>
           ))}
         </div>

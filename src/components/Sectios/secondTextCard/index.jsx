@@ -4,8 +4,8 @@ import cn from "./style.module.scss";
 function SecondTextCard() {
     return (
         <div className={clsx(cn["SecondTextCard"])}>
-            <h3 class="font-[Poppins] font-medium text-[93.3px]"  >Yashasun</h3>
-            <h3 class="font-[Poppins] font-medium text-[93.3px] ">Turkiston Muxtoriyati.</h3>
+            <h3 class="font-[Poppins] font-medium text-[100px]"  >Yashasun</h3>
+            <h3 class="font-[Poppins] font-medium text-[100px] ">Turkiston Muxtoriyati.</h3>
             <p class="font-[Poppins] font-light text-[32px] text-[#021321]">
                 Turkiston musulmonlarining to‘rtinchi favqulodda qurultoyi Turkiston o‘lkasida bo‘lg‘an xalqlarning xohishlari bo‘yicha Rusiya inqilobi tarafidan berilgan asoslarga binoan Fidiratsiya asosiga qurulg‘an Rusiya Jumhuriyati ila birgalikda qolg‘ani holda Turkistonni yerlik muxtoriyati, ya’ni <span class="font-[Poppins] font-light text-[32px] text-[#021321]">"территорриальный автономиялик"</span> e’lon qiladur.
             </p>

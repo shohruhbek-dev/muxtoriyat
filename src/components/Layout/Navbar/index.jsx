@@ -26,10 +26,10 @@ function Nav() {
                 <Link className="font-poppins font-medium text-base leading-[26.67px] tracking-normal align-middle uppercase" to={"/write"}>
                     Maqola yozish
                 </Link>
-                <div className={clsx(cn['lan'])}>
+                <div className='ml-[20px]'>
                     <ul>
                         <li><LanguageSelector /></li>
-                        <li><i className="font-poppins font-medium text-base leading-[26.67px] tracking-normal align-middle uppercase" class="fa-solid fa-user"></i>Kirish</li>
+                        <li><i className="font-poppins font-medium text-base leading-[26.67px] tracking-normal align-middle uppercase" class="mr-2 fa-solid fa-user"></i>Kirish</li>
                     </ul>
                 </div>
             </ul>

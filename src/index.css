@@ -48,6 +48,7 @@ ol.custom-list li::before {
 @theme {
   --font-poppins: "Poppins", sans-serif;
   --font-inter: "Inter", sans-serif;
+  --font-unbounded: "Unbounded", sans-serif;
 }
 ol {
     list-style-type: decimal;

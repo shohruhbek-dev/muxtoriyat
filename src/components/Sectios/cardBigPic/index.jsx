@@ -7,7 +7,7 @@ function CardBigPic() {
 
         <div className={clsx(cn["CardBigPic"])}>
             <img src={pic1} alt="Image1" />
-            <button><a href="#"><i class="fa-solid fa-circle-play"></i>Videoni ko‘rish uchun bosing</a></button>
+            <button><a className="font-poppins" href="#"><i class="fa-solid fa-circle-play"></i>Videoni ko‘rish uchun bosing</a></button>
         </div>
     )
 

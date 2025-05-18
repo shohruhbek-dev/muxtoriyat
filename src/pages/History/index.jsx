@@ -5,14 +5,17 @@ import tarix2 from "../../assets/assets_task_01jrnj4574fm78za4ea2nsycqk_img_0 1.
 import tarix5 from "../../assets/assets_task_01jsgccxvge9vtvyyvam1fpkwj_img_0 1.png"
 import tarix3 from "../../assets/Group 1171275055.png"
 import tarix4 from "../../assets/freepik__enhance__36238 2 (3).png"
+import BackButton from "../../components/Button/backButton"
 
 
 function History() {
     return (
+        <>
+        <BackButton />
         <div className=" history max-w-[60%] m-auto p-[40px]">
-            <h1 className="font-poppins mt-[50px] text-[#021321] font-semibold text-[40px] leading-[100%] tracking-[0%]  align-middle"
-            >Turkiston <span className="text-[#003561]">muxtoriyati</span> tarixi</h1>
-            <p className="font-serif mt-4 mb-4 text-[#242424] font-normal text-xl leading-8 tracking-normal align-middle"
+            <h1 className="font-inter mt-[40px] text-[#242424] font-[700] text-[40px] leading-[100%] tracking-[0%]  align-middle"
+            >Turkiston   muxtoriyati tarixi</h1>
+            <p className="font-serif mt-6 mb-4 text-[#242424] font-normal text-xl leading-8 tracking-normal align-middle"
             >Oʻzbekiston mustaqillikka erishgach, respublika hayotining barcha jabhalarida tub islohotlar amalga oshirildi va oshirilmoqda. O‘zbek xalqining oʻz taqdirini oʻzi belgilashi milliy tiklanish bilan bog‘liq jarayonlarni chuqur idrok etishda milliy davlat qurilishi tajribasini ilmiy o‘rganilishi, O‘zbekistonni yangilanish va taraqqiyot yo‘lidagi tajribalarni umumlashtirishni taqozo etadi.</p>
             <img src={tarix1} alt="" />
             <div className="mt-[20px] border-s-4 p-[10px]"><i className="font-serif font-semibold text-[#242424] italic text-xl leading-8 tracking-[ -0.06px ]">Turkiston muxtoriyati a’zolari
@@ -94,6 +97,7 @@ function History() {
             <p className="font-serif mt-4 mb-4 text-[#242424] font-normal text-xl leading-8 tracking-normal align-middle">1918-yilning Qoʻqondagi fojiali fevral voqealaridan soʻng ozodlik uchun kurash izchil ravishda ochiq qurolli qarshilik shaklini ola boshladi. Shundan keyin Turkistonning tub aholisi va ularning siyosiy yoʻlboshchilari bolsheviklarni hukumat tuzilmalari xatti-harakatlarida milliy mentalitetga yot boʻlgan davlatchilikni joriy qilishga oshkora intilishni yaqqol koʻrgach, milliy masalani tinch yoʻl bilan hal etish imkoniyati tugadi, faqat qurol kuchi bilan ozodlik va mustaqillik haqidagi asriy orzuni amalga oshirish mumkin, degan xulosaga keldilar.</p>
             <p className="font-serif mt-4 mb-4 text-[#242424] font-normal text-xl leading-8 tracking-normal align-middle">Bu bilan Turkistonda sovetlarga qarshi ommaviy milliy – ozodlik va istiqlolchilik harakatiga asos solindi.</p>
         </div >
+        </>
     );
 }
 

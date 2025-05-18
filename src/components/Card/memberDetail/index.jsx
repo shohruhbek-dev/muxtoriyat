@@ -21,16 +21,16 @@ function MemberDetail() {
                     <img
                         src={img}
                         alt={text}
-                        className="w-40 h-40  rounded-full object-cover border"
+                        className="w-40 h-40  rounded-full object-cover"
                     />
 
                     <div className="flex flex-col items-start">
-                        <h1 className="text-3xl font-bold text-[#021321]">{text}</h1>
-                        <p className="text-lg text-gray-700 mt-2">{dob}</p>
+                        <h1 className="font-inter text-3xl font-bold text-[#021321]">{text}</h1>
+                        <p className="font-inter text-lg text-gray-700 mt-2">{dob}</p>
                     </div>
                 </div>
 
-                <p className="font-[Source_Serif_Pro] font-normal text-[20px] leading-[32px] tracking-[0px]">
+                <p className="font-[Source_Serif_Pro] font-normal text-[#242424] text-[20px] leading-[32px] tracking-[0px]">
                     {about.split('\n').map((line, idx) => (
                         <p key={idx} className="mb-2">{line}</p>
                     ))}
