@@ -15,7 +15,7 @@ function MediaComponent() {
   };
 
   async function fetchData() {
-    const result = await getCategories("parentId.equals=1");
+    const result = await getCategories("parentName.equals=Media");
     setData(result);
   }
   useEffect(() => {

@@ -4,7 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { BiEditAlt } from "react-icons/bi";
-import { Link } from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import "./style.scss";
 import {
   getProfileData,
@@ -24,6 +24,7 @@ const Profile = () => {
   const [showNewPasswordReset, setShowNewPasswordReset] = useState(false);
   const [isPasswordEditing, setIsPasswordEditing] = useState(false);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
 
   const fetchData = async () => {
@@ -120,6 +121,8 @@ const Profile = () => {
         setOldPassword("");
         setNewPassword("");
         setNewPasswordReset("");
+        localStorage.removeItem("token");
+        navigate("/auth");
       } else {
         toast.error(
           response.message || "Parolni o‘zgartirishda xatolik yuz berdi"

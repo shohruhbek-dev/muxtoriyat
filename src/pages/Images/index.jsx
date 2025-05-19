@@ -9,7 +9,7 @@ const Images = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   async function fetchData() {
-    const result = await getCategoriesImagesData(`categoryId.equals=11`);
+    const result = await getCategoriesImagesData(`categoryId.equals=1003`);
     setData(result);
   }
 
