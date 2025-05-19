@@ -139,7 +139,7 @@ export default function Videos() {
               <div className="flex items-center gap-3 text-sm mt-5 text-gray-500">
                 <span className="flex items-center gap-1">
                   <IoCalendarOutline />{" "}
-                  {new Date(item?.createdAt).toLocaleDateString("en-US", {
+                  {new Date(item?.createdDate).toLocaleDateString("en-US", {
                     month: "short",
                     day: "numeric",
                   })}

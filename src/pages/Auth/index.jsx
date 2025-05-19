@@ -52,6 +52,7 @@ const Auth = () => {
           localStorage.setItem("username", response.username);
         }
 
+        toast.dismiss();
         toast.success("Muvaffaqiyatli kirildi");
         navigate("/");
       } else {
