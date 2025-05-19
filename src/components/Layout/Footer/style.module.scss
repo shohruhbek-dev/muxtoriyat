@@ -5,7 +5,6 @@ footer {
     color: #9E9E9E;
 
 
-   
     .firstSec {
         width: 100%;
         padding: 60px 40px;
@@ -18,15 +17,14 @@ footer {
             flex-direction: column;
             gap: 20px;
             width: 30%;
-            // background-color: red;
             align-items: start;
 
         }
 
         .ulSec {
-            // background-color: red;
             display: flex;
             justify-content: space-between;
+            flex-wrap: wrap;
             gap: 60px;
 
             ul {
@@ -43,7 +41,13 @@ footer {
             }
         }
 
+        @media screen and (max-width: '560px') {
+            flex-wrap: wrap;
 
+            .logoSec {
+                width: 100%;
+            }
+        }
 
     }
 
@@ -69,6 +73,15 @@ footer {
                 color: #FFFFFF;
             }
 
+        }
+
+        @media screen and (max-width: '560px') {
+            flex-wrap: wrap;
+            row-gap: 24px;
+
+            ul{
+                flex-wrap: wrap;
+            }
         }
     }
 }

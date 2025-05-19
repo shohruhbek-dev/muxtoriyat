@@ -12,4 +12,17 @@
         color: #3E4B51;
         font-weight: 400;
     }
+
+    @media screen and (max-width: '670px') {
+        h1 {
+            font-size: 56px;
+        }
+    }
+
+    @media screen and (max-width: '540px') {
+        padding: 40px;
+        h1 {
+            font-size: 42px;
+        }
+    }
 }

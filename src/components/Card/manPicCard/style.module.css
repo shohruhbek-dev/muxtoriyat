@@ -1,0 +1,14 @@
+.manPicCard {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  color: #021321;
+  font-size: 22px;
+}
+.manPicCard .picSec {
+  width: 100%;
+}
+.manPicCard .picSec img {
+  border-radius: 215px 215px 0 0;
+  align-items: center;
+}/*# sourceMappingURL=style.module.css.map */

@@ -1,41 +1,159 @@
 import clsx from "clsx";
 import cn from "./style.module.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import LanguageSelector from "../../Card/languageSelecter";
-import logo from '/src/assets/logo.png';
+import MediaComponent from "../../MediaComponent";
+import { FaBarsStaggered } from "react-icons/fa6";
+import { useState, useEffect, useRef } from "react";
+import { IoCloseSharp } from "react-icons/io5";
+import { FaUser } from "react-icons/fa";
+import { IoMdLogOut } from "react-icons/io";
+import { getUserNameFromToken } from "../../../services/user";
+import { useTranslation } from "react-i18next";
+import logo from "/src/assets/logo.png";
+
 function Nav() {
-    return (
-        <header className={clsx(cn["header"])}>
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [showUserMenu, setShowUserMenu] = useState(false);
+  const [username, setUsername] = useState("");
+  const { t } = useTranslation();
+  const navigate = useNavigate();
 
-            <Link to={"/"}>
-                <img src={logo} alt="" /></Link>
+  const userMenuRef = useRef(null);
+  // Check if user is authenticated
+  useEffect(() => {
+    const token = localStorage.getItem("token");
 
-            <ul>
-                <Link className="font-poppins font-medium text-base leading-[26.67px] tracking-normal align-middle uppercase" to={"/"}>
+    if (token) {
+      const userInfo = getUserNameFromToken();
+      setIsAuthenticated(true);
+      setUsername(userInfo.sub || "Foydalanuvchi");
+      localStorage.setItem("active", userInfo.active || false);
+    }
+  }, []);
 
-                    Asosiy
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (userMenuRef.current && !userMenuRef.current.contains(event.target)) {
+        setShowUserMenu(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("username");
+    setIsAuthenticated(false);
+    setShowUserMenu(false);
+    navigate("/");
+    window.location.reload();
+  };
+
+  return (
+    <header className={clsx(cn["header"])}>
+      <Link to={"/"}>
+        <img src={logo} alt="logo" />
+      </Link>
+
+      <div
+        className={clsx(
+          "fixed top-0 left-0 bottom-0 z-10 w-screen h-screen bg-[#0000004a] lg:hidden",
+          {
+            "translate-x-0": isMenuOpen,
+            "translate-x-full": !isMenuOpen,
+            "w-full": true,
+          }
+        )}
+        onClick={() => setIsMenuOpen(false)}
+      ></div>
+      <div
+        className={clsx(
+          "fixed z-20 lg:static top-0 right-0 w-screen sm:w-[50%] h-screen lg:h-auto lg:w-full bg-black lg:bg-transparent transition",
+          {
+            "translate-x-0 lg:translate-none": isMenuOpen,
+            "translate-x-full lg:translate-none": !isMenuOpen,
+            "w-full sm:w-1/2": true,
+          }
+        )}
+      >
+        <ul className="flex flex-col items-start lg:flex-row mt-24 lg:mt-0 gap-8 lg:items-center lg:justify-end pl-12 lg:pl-0">
+          <IoCloseSharp
+            className="absolute top-8 right-8 cursor-pointer lg:hidden"
+            size={32}
+            onClick={() => setIsMenuOpen(false)}
+          />
+          <Link to={"/"}> {t("main")} </Link>
+          <Link to={"/history"}> {t("history")} </Link>
+          <Link to={"/articles"}>{t("articles")}</Link>
+          <Link to={"/members"}>{t("govermentMembers")}</Link>
+          <li>
+            <a href="#">{t("sources")}</a>
+          </li>
+          <MediaComponent />
+          <Link to={"/write"}>{t("write")}</Link>
+          <div className={clsx(cn["lan"])}>
+            <ul className="flex gap-4">
+              <li>
+                <LanguageSelector />
+              </li>
+              {isAuthenticated ? (
+                <li className="relative" ref={userMenuRef}>
+                  {" "}
+                  <button
+                    className="flex items-center gap-2 cursor-pointer"
+                    onClick={() => setShowUserMenu(!showUserMenu)}
+                  >
+                    <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white">
+                      {username.charAt(0).toUpperCase()}
+                    </div>
+                    <span>{username}</span>
+                  </button>
+                  {showUserMenu && (
+                    <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50">
+                      <Link
+                        to="/profile"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        onClick={() => setShowUserMenu(false)}
+                      >
+                        {t("profile")}
+                      </Link>
+                      <button
+                        className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer"
+                        onClick={handleLogout}
+                      >
+                        <div className="flex items-center gap-2">
+                          <IoMdLogOut />
+                          {t("logout")}
+                        </div>
+                      </button>
+                    </div>
+                  )}
+                </li>
+              ) : (
+                <Link to={"/auth"} className="flex items-center gap-2">
+                  <FaUser />
+                  {t("login")}
                 </Link>
-                <Link className="font-poppins font-medium text-base leading-[26.67px] tracking-normal align-middle uppercase" to={"/history"}>
-
-                    Muxtoriyat tarixi
-                </Link>
-                <Link className="font-poppins font-medium text-base leading-[26.67px] tracking-normal align-middle uppercase" to={"/article"}>Maqolalar</Link>
-                <Link className="font-poppins font-medium text-base leading-[26.67px] tracking-normal align-middle uppercase" to={'/members'}>Hukumat a’zolari</Link>
-                <li><a className="font-poppins font-medium text-base leading-[26.67px] tracking-normal align-middle uppercase" href="#">Manbalar</a></li>
-                <li><a className="font-poppins font-medium text-base leading-[26.67px] tracking-normal align-middle uppercase" href="#">Media</a></li>
-                <Link className="font-poppins font-medium text-base leading-[26.67px] tracking-normal align-middle uppercase" to={"/write"}>
-                    Maqola yozish
-                </Link>
-                <div className='ml-[20px]'>
-                    <ul>
-                        <li><LanguageSelector /></li>
-                        <li><i className="font-poppins font-medium text-base leading-[26.67px] tracking-normal align-middle uppercase" class="mr-2 fa-solid fa-user"></i>Kirish</li>
-                    </ul>
-                </div>
+              )}
             </ul>
+          </div>
+        </ul>
+      </div>
 
-        </header>
-    );
+      <button
+        className="cursor-pointer block lg:hidden"
+        onClick={() => setIsMenuOpen(true)}
+      >
+        <FaBarsStaggered size={28} />
+      </button>
+    </header>
+  );
 }
 
 export default Nav;

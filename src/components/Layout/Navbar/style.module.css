@@ -1,0 +1,14 @@
+.header {
+  background: linear-gradient(to left, #191D28, #000000);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 26px 40px;
+  font-family: Poppins;
+  font-size: 16px;
+  z-index: 10;
+  position: sticky;
+  top: 0;
+  left: 0;
+}/*# sourceMappingURL=style.module.css.map */

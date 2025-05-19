@@ -1,23 +1,58 @@
 import clsx from "clsx";
 import Counter from "../../Card/counter";
 import cn from "./style.module.scss";
+
+import { useTranslation } from "react-i18next";
+import useInView from "../../../hooks/useInView";
+
 function CountersSec() {
-    return (
-        <div className={clsx(cn["bigcounters"])}>
-            <div className={clsx(cn["countersText"])}>
-                <h1 className="font-poppins font-medium text-[64px] leading-none tracking-normal align-middle">Asosiy ko‘rsatkichlar</h1>
+  const { t } = useTranslation();
+  const [ref, isInView] = useInView({ threshold: 0.3 });
 
-                <p className="font-poppins font-normal text-[22.7px] leading-[36px] tracking-normal align-middle">Bugungi kunda yurtimizda milliy-demokratik davlatchilikni barpo etishda ilk tajriba bo‘lgan Turkiston Muxtoriyati uchun kurash tarixi alohida ahamiyat kasb etadi. Ilmiy jamoatchilik eʼtiborini o‘ziga jalb etgan bu tarix hozirda nafaqat ilmiy, balki amaliy va hatto siyosiy qiziqish uyg‘otdi.</p>
-            </div>
+  return (
+    <div className={clsx(cn["bigcounters"])} ref={ref}>
+      <div className={clsx(cn["countersText"])}>
+        <h1 className="font-poppins font-medium text-[64px] leading-none tracking-normal align-middle">{t("countersSecHeader")}</h1>
+        <p className="font-poppins font-normal text-[22.7px] leading-[36px] tracking-normal align-middle">{t("countersSecSub")}</p>
+      </div>
 
-            <div className={clsx(cn["counters"])}>
-                <Counter start={0} end={54} duration={1.5} text={"Maqolalar"} />
-                <Counter start={0} end={47} duration={1.5} text={"Kitoblar"} />
-                <Counter start={0} end={16} duration={1.5} text={"Arxiv hujjatlar"} />
-                <Counter start={0} end={21} duration={1.5} text={"Avtoreferatlar"} />
-            </div>
-        </div>
-    )
+      <div className={clsx(cn["counters"])}>
+        {isInView && (
+          <>
+            <Counter
+              key={isInView + "-articles"}
+              start={0}
+              end={54}
+              duration={1.5}
+              text={t("articles")}
+            />
+            <Counter
+              key={isInView + "-books"}
+              start={0}
+              end={47}
+              duration={1.5}
+              text={t("books")}
+            />
+            <Counter
+              key={isInView + "-historyDoc"}
+              start={0}
+              end={16}
+              duration={1.5}
+              text={t("historyDoc")}
+            />
+            <Counter
+              key={isInView + "-autoRefer"}
+              start={0}
+              end={21}
+              duration={1.5}
+              text={t("autoRefer")}
+            />
+          </>
+        )}
+      </div>
+    </div>
+  );
 }
 
 export default CountersSec;
+
