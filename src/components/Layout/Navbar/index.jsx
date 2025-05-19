@@ -29,7 +29,7 @@ function Nav() {
       const userInfo = getUserNameFromToken();
       setIsAuthenticated(true);
       setUsername(userInfo.sub || "Foydalanuvchi");
-      localStorage.setItem("active", userInfo.active || false);
+      localStorage.setItem("active", userInfo.active ? "true" : "false");
     }
   }, []);
 

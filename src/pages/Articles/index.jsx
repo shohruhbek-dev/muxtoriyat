@@ -36,7 +36,7 @@ function Articles() {
       setViewedArticles(JSON.parse(storedViewedArticles));
     }
 
-  }, );
+  }, []);
 
   const handleLike = (id) => {
     let updatedLikedArticles = [...likedArticles];

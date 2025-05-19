@@ -20,11 +20,12 @@ function Root() {
   useEffect(() => {
     const storedToken = localStorage.getItem("token");
     setToken(storedToken);
-  }, [token]);
+  }, []);
 
   // Protected route component
   const ProtectedRoute = ({ children }) => {
-    if (!token) {
+    const storedToken = localStorage.getItem("token");
+    if (!storedToken) {
       return <Navigate to="/auth" />;
     }
     return children;
