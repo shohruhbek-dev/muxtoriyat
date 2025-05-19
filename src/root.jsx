@@ -41,7 +41,7 @@ function Root() {
           <Route path="videos" element={<Videos />} />
           <Route path="history" element={<History />} />
           <Route path="members" element={<Members />} />
-          <Route path="member/:id" element={<MemberDetail />} />
+          <Route path="members/:id" element={<MemberDetail />} />
           <Route
             path="/write"
             element={

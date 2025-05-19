@@ -6,9 +6,10 @@ function CardFirst() {
   const { t } = useTranslation();
   return (
     <div className={clsx(cn["firstCard"])}>
-      <h1>{t("cardFirstHeaderText")} </h1>
-      <p>{t("cardFirstSubText")}</p>
+      <h1 className="font-poppins mt-[36px] text-[#021321] font-semibold text-[40px]">{t("cardFirstHeaderText")} </h1>
+      <p className="font-poppins">{t("cardFirstSubText")}</p>
     </div>
   );
 }
 export default CardFirst;
+
