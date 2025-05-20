@@ -7,6 +7,7 @@ import ImageResize from "quill-image-resize-module-react";
 import {toast} from "react-toastify";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTimes} from "@fortawesome/free-solid-svg-icons";
+import {useNavigate} from "react-router-dom";
 
 Quill.register("modules/imageResize", ImageResize);
 
@@ -17,7 +18,7 @@ const WritePage = () => {
     const [article, setArticle] = useState("");
     const [image, setImage] = useState(null);
     const [imageContentType, setImageContentType] = useState(null);
-
+    const navigate = useNavigate();
     const editorRef = useRef(null);
     const quillInstance = useRef(null);
     const fileInputRef = useRef(null);
@@ -88,6 +89,8 @@ const WritePage = () => {
         const response = await postArticle(articleData);
         if (response.status === 200) {
             toast.success(t("ArticleCreated"));
+            navigate("/articles")
+            window.location.reload();
         } else {
             toast.error(t("ArticleNotCreated"));
         }

@@ -15,7 +15,7 @@ const PostCard = ({ post }) => {
         </div>
   
         {/* Post Title */}
-        <h2 className="text-lg font-semibold mb-2">{post.title}</h2>
+        <h2 className="text-lg font-bold mb-2">{post.title}</h2>
   
         {/* Stats and Date */}
         <div className="flex justify-between text-gray-500 text-sm">
