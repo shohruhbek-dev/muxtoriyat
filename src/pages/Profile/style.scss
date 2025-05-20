@@ -1,0 +1,43 @@
+.input-border{
+    border: 1px solid #D7DDE8;
+    width: 100%;
+    padding: 10px 20px;
+    border-radius: 8px;
+}
+.btn{
+    cursor: pointer;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 16px;
+    width: 100%;
+    padding: 10px 0;
+    transition: all 0.3s ease;
+}
+
+.cancelBtn{
+    border: 1px solid #EAEEF4;
+    color: #021321;
+    &:hover{
+        background: #f5f7fa72;
+    }
+}
+
+.saveBtn{
+    background: #11141C;
+    color: #fff;
+    &:hover{
+        background: #242424;
+    }
+}
+
+.password-box{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.password-text{
+    font-size: 16px;
+    color: #021321;
+    font-weight: 500;
+}

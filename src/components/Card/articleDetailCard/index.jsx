@@ -7,6 +7,7 @@ import { FiEye } from "react-icons/fi";
 import { useTranslation } from "react-i18next";
 import { IoShareOutline } from "react-icons/io5";
 import userImg from "/src/assets/user.png";
+import "quill/dist/quill.snow.css";
 
 function ArticleDetail() {
   const { t } = useTranslation();

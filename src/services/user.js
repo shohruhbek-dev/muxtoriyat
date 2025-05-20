@@ -1,14 +1,14 @@
 export function getUserNameFromToken() {
   try {
-    const token = localStorage.getItem("token"); // token nomini siz qanday saqlagan bo‘lsangiz, shunday yozing
+    const token = localStorage.getItem("token");
     if (!token) return null;
 
-    const payload = token.split(".")[1]; // ikkinchi bo‘lak — payload
-    const decodedPayload = JSON.parse(atob(payload)); // Base64 decoding + JSON parse
+    const payload = token.split(".")[1];
+    const decodedPayload = JSON.parse(atob(payload)); // base64 decode + JSON parse
 
-    return (
-      decodedPayload.userName || decodedPayload.sub || decodedPayload.email
-    ); // nimasi bo‘lsa
+    // Faqat kerakli qismlarini qaytaramiz
+    const { active, sub } = decodedPayload;
+    return { active, sub };
   } catch (error) {
     console.error("Tokenni o‘qib bo‘lmadi:", error);
     return null;
