@@ -2,8 +2,12 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { postAuth } from "../../services/authService";
+import {useTranslation} from "react-i18next";
 
 const Auth = () => {
+
+  const {t} = useTranslation();
+
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -74,7 +78,7 @@ const Auth = () => {
       <div className="max-w-md w-full bg-white rounded-lg shadow-lg p-8">
         <div className="text-center">
           <h2 className="text-3xl font-extrabold text-gray-900 mb-6">
-            Tizimga kirish
+            {t("SignIn")}
           </h2>
         </div>
 
@@ -84,7 +88,7 @@ const Auth = () => {
               htmlFor="username"
               className="block text-sm font-medium text-gray-700"
             >
-              Username
+              {t("Username")}
             </label>
             <div className="mt-1">
               <input
@@ -105,7 +109,7 @@ const Auth = () => {
               htmlFor="password"
               className="block text-sm font-medium text-gray-700"
             >
-              Parol
+              {t("Password")}
             </label>
             <div className="mt-1">
               <input
@@ -135,7 +139,7 @@ const Auth = () => {
                 htmlFor="remember-me"
                 className="ml-2 block text-sm text-gray-900"
               >
-                Eslab qolish
+                {t("RememberMe")}
               </label>
             </div>
 
@@ -144,7 +148,7 @@ const Auth = () => {
                 href="#"
                 className="font-medium text-blue-600 hover:text-blue-500"
               >
-                Parolni unutdingizmi?
+                {t("ForgotPassword")}
               </a>
             </div>
           </div>

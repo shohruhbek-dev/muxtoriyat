@@ -80,7 +80,7 @@ function Articles() {
           id="search"
           name="search"
           type="text"
-          placeholder="Qidirish"
+          placeholder={t("Search")}
           className="inline-block grow py-4 px-3 text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm"
         />
       </div>

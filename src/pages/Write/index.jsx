@@ -109,7 +109,7 @@ const WritePage = () => {
                         id="name"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
-                        placeholder={t("Name")}
+                        placeholder={t("ArticleName")}
                         className="w-full p-2 focus:outline-none focus:ring-0 border-b border-gray-200"
                         required
                     />
