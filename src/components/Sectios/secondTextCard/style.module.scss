@@ -1,26 +1,26 @@
 .SecondTextCard {
     padding: 100px 40px;
 
-    // display: flex;
-    // flex-wrap: wrap;
-    // gap: 25px;
-    h3{
-        font-size: 50px;
+    h3 {
+        font-size: 60px;
 
     }
-    p{
+
+    p {
         font-size: 24px;
         font-weight: 300;
         padding: 24px 0;
-        span{
+
+        span {
             font-weight: 400;
         }
     }
-    i{
+
+    i {
         display: block;
         text-align: end;
         font-size: 20px;
         font-weight: 500;
     }
-  
+
 }

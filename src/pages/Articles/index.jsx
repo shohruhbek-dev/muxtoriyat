@@ -7,11 +7,13 @@ import { FaHandsClapping } from "react-icons/fa6";
 import { IoCalendarOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import Spinner from "../../components/Spinner";
+import { useTranslation } from "react-i18next";
 
 function Articles() {
   const [data, setData] = useState([]);
   const [pageSize, setPageSize] = useState();
   const [currentPage, setCurrentPage] = useState(0);
+  const { t } = useTranslation();
   const [limit, setLimit] = useState(8);
   const [likedArticles, setLikedArticles] = useState([]);
   const [viewedArticles, setViewedArticles] = useState([]);
@@ -35,7 +37,6 @@ function Articles() {
     if (storedViewedArticles) {
       setViewedArticles(JSON.parse(storedViewedArticles));
     }
-
   }, []);
 
   const handleLike = (id) => {
@@ -85,9 +86,9 @@ function Articles() {
 
       {/* Video ro'yxati */}
       <h1 className="font-bold text-xl sm:text-3xl text-[#021321]">
-        Maqolalar
+        {t("Articles")}
       </h1>
-        {loading && <Spinner />}
+      {loading && <Spinner />}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
         {data?.map((item, i) => (
           <div key={i} className="group relative cursor-pointer">

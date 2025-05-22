@@ -20,18 +20,32 @@ function MembersSec({
 }) {
   const { t } = useTranslation();
 
-  const pics = useMemo(()=>[
+  const pics = useMemo(() => [
     {
       img: man1,
       text: t("members.tinishboyev.text"),
       dob: t("members.tinishboyev.dob"),
       about: t("members.tinishboyev.about"),
+      books: [
+        t("members.tinishboyev.books.book1"),
+        t("members.tinishboyev.books.book2"),
+        t("members.tinishboyev.books.book3"),
+        t("members.tinishboyev.books.book4"),
+        t("members.tinishboyev.books.book5"),
+      ],
     },
     {
       img: man2,
       text: t("members.abdurahmon.text"),
       dob: t("members.abdurahmon.dob"),
       about: t("members.abdurahmon.about"),
+      books: [
+        t("members.abdurahmon.books.book1"),
+        t("members.abdurahmon.books.book2"),
+        t("members.abdurahmon.books.book3"),
+        t("members.abdurahmon.books.book4"),
+        t("members.abdurahmon.books.book5"),
+      ],
     },
 
     {
@@ -39,36 +53,98 @@ function MembersSec({
       text: t("members.hidoyatbek.text"),
       dob: t("members.hidoyatbek.dob"),
       about: t("members.hidoyatbek.about"),
+      books: [
+        t("members.hidoyatbek.books.book1"),
+        t("members.hidoyatbek.books.book2"),
+        t("members.hidoyatbek.books.book3"),
+      ],
     },
     {
       img: man3,
       text: t("members.solomon.text"),
       dob: t("members.solomon.dob"),
       about: t("members.solomon.about"),
+      books: [
+        t("members.solomon.books.book1"),
+        t("members.solomon.books.book2"),
+      ],
     },
     {
       img: man4,
       text: t("members.mustafo.text"),
       dob: t("members.mustafo.dob"),
       about: t("members.mustafo.about"),
+      books: [
+        t("members.mustafo.books.book1"),
+        t("members.mustafo.books.book2"),
+        t("members.mustafo.books.book3"),
+        t("members.mustafo.books.book4"),
+        t("members.mustafo.books.book5"),
+        t("members.mustafo.books.book6"),
+        t("members.mustafo.books.book7"),
+        t("members.mustafo.books.book8"),
+        t("members.mustafo.books.book9"),
+        t("members.mustafo.books.book10"),
+        t("members.mustafo.books.book11"),
+      ],
     },
     {
       img: man6,
       text: t("members.sulton.text"),
       dob: t("members.sulton.dob"),
       about: t("members.sulton.about"),
+      books: [
+        t("members.sulton.books.book1"),
+        t("members.sulton.books.book2"),
+        t("members.sulton.books.book3"),
+        t("members.sulton.books.book4"),
+        t("members.sulton.books.book5"),
+        t("members.sulton.books.book6"),
+      ],
     },
     {
       img: man5,
       text: t("members.ubaydulla.text"),
       dob: t("members.ubaydulla.dob"),
       about: t("members.ubaydulla.about"),
+      books: [
+        t("members.ubaydulla.books.book1"),
+        t("members.ubaydulla.books.book2"),
+        t("members.ubaydulla.books.book3"),
+        t("members.ubaydulla.books.book4"),
+        t("members.ubaydulla.books.book5"),
+        t("members.ubaydulla.books.book6"),
+        t("members.ubaydulla.books.book7"),
+      ],
     },
     {
       img: man7,
       text: t("members.obidjon.text"),
       dob: t("members.obidjon.dob"),
       about: t("members.obidjon.about1") + t("members.obidjon.about2"),
+      books: [
+        t("members.obidjon.books.book1"),
+        t("members.obidjon.books.book2"),
+        t("members.obidjon.books.book3"),
+        t("members.obidjon.books.book4"),
+        t("members.obidjon.books.book5"),
+        t("members.obidjon.books.book6"),
+        t("members.obidjon.books.book7"),
+        t("members.obidjon.books.book8"),
+        t("members.obidjon.books.book9"),
+        t("members.obidjon.books.book10"),
+        t("members.obidjon.books.book11"),
+        t("members.obidjon.books.book12"),
+        t("members.obidjon.books.book13"),
+        t("members.obidjon.books.book14"),
+        t("members.obidjon.books.book15"),
+        t("members.obidjon.books.book16"),
+        t("members.obidjon.books.book17"),
+        t("members.obidjon.books.book18"),
+        t("members.obidjon.books.book19"),
+        t("members.obidjon.books.book20"),
+        t("members.obidjon.books.book21"),
+      ],
     },
   ]);
   const [clones, setClones] = useState([]);
@@ -117,13 +193,13 @@ function MembersSec({
         className={`headings flex  justify-between flex-col lg:flex-row items-start gap-5 md:gap-12`}
       >
         {heading && (
-          <h1 className="text-[#021321] text-2xl md:text-5xl lg:text-6xl">
+          <h1 className="font-poppins font-medium text-[#021321] text-2xl md:text-5xl lg:text-6xl">
             {t(`${heading}`)}
           </h1>
         )}
         {subheading && (
           <p
-            className={`text-2xl  text-left lg:text-right text-[#2D2D2D] space-y-2`}
+            className={`font-poppins font-medium text-2xl text-left lg:text-right text-[#2D2D2D] space-y-2`}
           >
             {t(`${subheading}`)}
           </p>

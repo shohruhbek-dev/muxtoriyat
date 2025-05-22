@@ -19,6 +19,8 @@
     "gsap": "^3.12.7",
     "i18next-browser-languagedetector": "^8.1.0",
     "i18next-http-backend": "^3.0.2",
+    "keep-react": "^1.6.1",
+    "phosphor-react": "^1.4.1",
     "quill": "^2.0.3",
     "quill-image-resize-module-react": "^3.0.0",
     "react": "^19.0.0",
