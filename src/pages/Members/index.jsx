@@ -6,9 +6,9 @@ function Members() {
   const { t } = useTranslation();
   return (
     <div className="">
-      <div className="pl-10">
+      <div className="container mx-auto w-[95%] pl-10">
         <h1
-          className="font-poppins mt-[50px] text-[#021321] font-semibold text-4xl md:text-[72px] leading-[100%] tracking-[0%]  align-middle"
+          className="font-inter mt-[56px] text-[#021321] font-semibold text-4xl md:text-[72px] leading-[100%] tracking-[0%]  align-middle"
           dangerouslySetInnerHTML={{ __html: t("membersHeading") }}
         ></h1>
 
