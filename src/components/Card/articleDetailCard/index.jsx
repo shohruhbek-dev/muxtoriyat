@@ -1,17 +1,15 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getArticleById, postLike, postView } from "../../../services/source";
 import { FaArrowLeftLong, FaHandsClapping } from "react-icons/fa6";
 import { FiEye } from "react-icons/fi";
-import { useTranslation } from "react-i18next";
 import { IoShareOutline } from "react-icons/io5";
 import userImg from "/src/assets/user.png";
 import "quill/dist/quill.snow.css";
+import BackButton from "../../BackButton";
 
 function ArticleDetail() {
-  const { t } = useTranslation();
-  const navigate = useNavigate();
   const { id: idParam } = useParams();
   // Convert ID to number immediately
   const id = parseInt(idParam, 10);
@@ -102,10 +100,6 @@ function ArticleDetail() {
     fetchData();
   };
 
-  const handleBackFunc = () => {
-    navigate(-1); // Navigates to the previous page
-  };
-
   useEffect(() => {
     fetchData();
   }, [id]);
@@ -113,13 +107,7 @@ function ArticleDetail() {
   return (
     <div className="container mx-auto w-[95%]">
       {/* go back */}
-      <button
-        className="flex gap-2 items-center cursor-pointer mb-5 mt-2"
-        onClick={handleBackFunc}
-      >
-        <FaArrowLeftLong size={20} />
-        <span className="text-[18px]">{t("goBack")}</span>
-      </button>
+      <BackButton />
       {/* content part */}
       <div className="flex flex-col gap-4 w-full md:w-[80%] mx-auto">
         {data && (

@@ -75,9 +75,20 @@ const MemberAboutSection = () => {
                   case "img":
                     return <img key={key} src={member[key]} alt="Member" />;
                   case "h1":
-                    return <h1 key={key}>{t(`${member[key]}`)}</h1>;
+                    return (
+                      <h1
+                        key={key}
+                        className="font-[Poppins] font-medium text-[24px] leading-[26.67px] tracking-[0%] align-middle uppercase"
+                      >
+                        {t(`${member[key]}`)}
+                      </h1>
+                    );
                   case "p":
-                    return <p key={key}>{t(`${member[key]}`)}</p>;
+                    return (
+                      <p className="font-[Poppins]  text-[12px] " key={key}>
+                        {t(`${member[key]}`)}
+                      </p>
+                    );
                   default:
                     return null;
                 }

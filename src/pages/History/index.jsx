@@ -14,42 +14,70 @@ function History() {
       <h1
         className={`${clsx(
           cn["headerSpan"]
-        )} font-poppins mt-[50px] text-[#021321] font-semibold text-4xl lg:text-[72px] leading-[100%] tracking-[0%]  align-middle`}
+        )} font-inter mt-[40px] text-[#242424] font-[700] text-[40px] leading-[100%] tracking-[0%]  align-middle`}
         dangerouslySetInnerHTML={{ __html: t("historyPageList.header1") }}
       />
 
-      <p className="font-poppins mt-[30px] mb-[40px] font-normal text-[22.7px]">
+      <p className="font-serif mt-6 mb-4 text-[#242424] font-normal text-xl leading-8 tracking-normal align-middle">
         {t("historyPageList.text1")}
       </p>
 
       <img src={tarix1} alt="" />
-
+      <div className="mt-[20px] border-s-4 p-[10px]">
+        <i className="font-serif font-semibold text-[#242424] italic text-xl leading-8 tracking-[ -0.06px ]">
+          {t("historyPageList.subHeader1")}
+        </i>
+      </div>
       {Array.from({ length: 4 }, (_, i) => i + 2).map((i) => (
-        <p key={1} className="font-poppins mt-9 mb-8 font-normal text-[22.7px]">
+        <p
+          key={i}
+          className="font-serif mt-4 mb-4 text-[#242424] font-normal text-xl leading-8 tracking-normal align-middle"
+        >
           {t(`historyPageList.text${i}`)}
         </p>
       ))}
 
       <img src={tarix2} alt="" />
-
+      <div className="mt-[20px] border-s-4 p-[10px]">
+        <i className="font-serif font-semibold text-[#242424] italic text-xl leading-8 tracking-[ -0.06px ]">
+          {t("historyPageList.subHeader2")}
+        </i>
+      </div>
       {Array.from({ length: 3 }, (_, i) => i + 6).map((i) => (
-        <p key={2} className="font-poppins mt-9 mb-8 font-normal text-[22.7px]">
+        <p
+          key={i}
+          className="font-serif mt-4 mb-4 text-[#242424] font-normal text-xl leading-8 tracking-normal align-middle"
+        >
           {t(`historyPageList.text${i}`)}
         </p>
       ))}
 
       <img src={tarix3} alt="" />
-
+      <div className="mt-[20px] border-s-4 p-[10px]">
+        <i className="font-serif font-semibold text-[#242424] italic text-xl leading-8 tracking-[ -0.06px ]">
+          {t("historyPageList.subHeader3")}
+        </i>
+      </div>
       {Array.from({ length: 4 }, (_, i) => i + 9).map((i) => (
-        <p key={3} className="font-poppins mt-9 mb-8 font-normal text-[22.7px]">
+        <p
+          key={i}
+          className="font-serif mt-4 mb-4 text-[#242424] font-normal text-xl leading-8 tracking-normal align-middle"
+        >
           {t(`historyPageList.text${i}`)}
         </p>
       ))}
 
       <img src={tarix4} alt="" />
-
+      <div className="mt-[20px] border-s-4 p-[10px]">
+        <i className="font-serif font-semibold text-[#242424] italic text-xl leading-8 tracking-[ -0.06px ]">
+          {t("historyPageList.subHeader4")}
+        </i>
+      </div>
       {Array.from({ length: 11 }, (_, i) => i + 13).map((i) => (
-        <p key={4} className="font-poppins mt-9 mb-8 font-normal text-[22.7px]">
+        <p
+          key={i}
+          className="font-serif mt-4 mb-4 text-[#242424] font-normal text-xl leading-8 tracking-normal align-middle"
+        >
           {t(`historyPageList.text${i}`)}
         </p>
       ))}
@@ -60,20 +88,26 @@ function History() {
 
       <ol className="mt-2 mb-14 custom-list">
         {Array.from({ length: 8 }, (_, i) => i + 24).map((i) => (
-          <li key={5} className="font-poppins   font-normal text-[22.7px] ">
+          <li key={i} className="font-poppins   font-normal text-[20px] ">
             {t(`historyPageList.text${i}`)}
           </li>
         ))}
       </ol>
 
       <img src={tarix5} alt="" />
-
+      <div className="mt-[20px] border-s-4 p-[10px]">
+        <i className="font-serif font-semibold text-[#242424] italic text-xl leading-8 tracking-[ -0.06px ]">
+          {t("historyPageList.subHeader5")}
+        </i>
+      </div>
       {Array.from({ length: 20 }, (_, i) => i + 32).map((i) => (
-        <p key={6} className="font-poppins mt-9 mb-8 font-normal text-[22.7px]">
+        <p
+          key={i}
+          className="font-serif mt-4 mb-4 text-[#242424] font-normal text-xl leading-8 tracking-normal align-middle"
+        >
           {t(`historyPageList.text${i}`)}
         </p>
       ))}
-
     </div>
   );
 }
