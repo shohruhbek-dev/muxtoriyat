@@ -3,6 +3,7 @@ import { FaArrowLeftLong } from "react-icons/fa6";
 import { useLocation, useNavigate } from "react-router-dom";
 import BackButton from "../../BackButton";
 import Books from "../books";
+import ScrollToTopButton from "../../ScrollToTopBtn";
 
 function MemberDetail() {
   const location = useLocation();
@@ -44,6 +45,7 @@ function MemberDetail() {
           <Books books={books} />
         </div>
       </div>
+      <ScrollToTopButton />
     </>
   );
 }

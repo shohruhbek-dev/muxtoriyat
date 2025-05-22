@@ -6,6 +6,7 @@ import tarix5 from "../../assets/assets_task_01jsgccxvge9vtvyyvam1fpkwj_img_0 1.
 import tarix3 from "../../assets/Group 1171275055.png";
 import tarix4 from "../../assets/freepik__enhance__36238 2 (3).png";
 import { useTranslation } from "react-i18next";
+import ScrollToTopButton from "../../components/ScrollToTopBtn";
 
 function History() {
   const { t } = useTranslation();
@@ -108,6 +109,7 @@ function History() {
           {t(`historyPageList.text${i}`)}
         </p>
       ))}
+      <ScrollToTopButton />
     </div>
   );
 }

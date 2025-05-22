@@ -13,6 +13,7 @@ import { useEffect, useState } from "react";
 import WritePage from "./pages/Write";
 import Profile from "./pages/Profile";
 import "quill/dist/quill.snow.css";
+import ScrollToTop from "./components/ScrollTop";
 
 function Root() {
   const [token, setToken] = useState();
@@ -33,6 +34,7 @@ function Root() {
 
   return (
     <>
+    <ScrollToTop />
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
