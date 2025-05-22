@@ -13,6 +13,7 @@ import { useEffect, useState } from "react";
 import WritePage from "./pages/Write";
 import Profile from "./pages/Profile";
 import "quill/dist/quill.snow.css";
+import TargetComponent from "./components/SourcesTargetComponent/index.jsx";
 
 function Root() {
   const [token, setToken] = useState();
@@ -40,6 +41,7 @@ function Root() {
           <Route path="articles/:id" element={<ArticleDetail />} />
           <Route path="images" element={<Images />} />
           <Route path="videos" element={<Videos />} />
+          <Route path="sources" element={<TargetComponent />} />
           <Route path="history" element={<History />} />
           <Route path="members" element={<Members />} />
           <Route path="member/:id" element={<MemberDetail />} />
