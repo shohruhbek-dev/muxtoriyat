@@ -61,13 +61,12 @@ export const postLike = async (id, state) => {
 export const postPassword = async (passwordData) => {
   const token = localStorage.getItem("token");
 
-  const res = await api.post(`/my-profile/reset-password`, passwordData, {
+  return await api.post(`/my-profile/reset-password`, passwordData, {
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
   });
-  return res;
 };
 
 export const postProfileData = async (data) => {

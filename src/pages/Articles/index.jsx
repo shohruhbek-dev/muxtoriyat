@@ -79,7 +79,7 @@ function Articles() {
           id="search"
           name="search"
           type="text"
-          placeholder="Qidirish"
+          placeholder={t("Search")}
           className="inline-block grow py-4 px-3 text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm"
         />
       </div>
@@ -101,7 +101,7 @@ function Articles() {
                 />
               </div>
               <div className="mt-2">
-                <p className="text-sm font-normal text-[#6B6B6B] mb-1">
+                <p className="text-lg font-bold mb-1">
                   {item?.name}
                 </p>
                 <h3 className="text-[17px] text-[#191919]">

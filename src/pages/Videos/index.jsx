@@ -22,8 +22,9 @@ export default function Videos() {
 
   async function fetchData(currentPage) {
     const result = await getCategoriesVideosData(
-      `categoryId.equals=10&page=${currentPage}&size=${limit}`
+      `categoryId.equals=1002&page=${currentPage}&size=${limit}`
     );
+    setData(result.data);
     setData(result.data);
     setPageSize(result.headers["x-total-count"]);
   }

@@ -2,14 +2,16 @@ import React, { useEffect, useState } from "react";
 import { getCategoriesImagesData } from "../../services/source";
 import { FiSearch } from "react-icons/fi";
 import { IoIosArrowBack, IoIosArrowForward, IoMdClose } from "react-icons/io";
+import {useTranslation} from "react-i18next";
 
 const Images = () => {
   const [data, setData] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const {t} = useTranslation();
 
   async function fetchData() {
-    const result = await getCategoriesImagesData(`categoryId.equals=11`);
+    const result = await getCategoriesImagesData(`categoryId.equals=1003`);
     setData(result);
   }
 
@@ -45,12 +47,12 @@ const Images = () => {
           id="search"
           name="search"
           type="text"
-          placeholder="Qidirish"
+          placeholder={t("Search")}
           className="inline-block grow py-4 px-3 text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm"
         />
       </div>
 
-      <h1 className="font-bold text-3xl text-[#021321]">Image gallereya</h1>
+      <h1 className="font-bold text-3xl text-[#021321]"> {t("Images")} </h1>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
         {data.length > 0 &&

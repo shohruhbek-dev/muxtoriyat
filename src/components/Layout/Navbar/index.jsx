@@ -11,6 +11,7 @@ import { IoMdLogOut } from "react-icons/io";
 import { getUserNameFromToken } from "../../../services/user";
 import { useTranslation } from "react-i18next";
 import logo from "/src/assets/logo.png";
+import SourcesComponent from "../../SourcesComponent/index.jsx";
 
 function Nav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -92,9 +93,7 @@ function Nav() {
           <Link to={"/history"}> {t("history")} </Link>
           <Link to={"/articles"}>{t("articles")}</Link>
           <Link to={"/members"}>{t("govermentMembers")}</Link>
-          <li>
-            <a href="#">{t("sources")}</a>
-          </li>
+          <SourcesComponent/>
           <MediaComponent />
           <Link to={"/write"}>{t("write")}</Link>
           <div className={clsx(cn["lan"])}>
