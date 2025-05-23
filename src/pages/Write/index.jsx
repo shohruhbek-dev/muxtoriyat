@@ -97,91 +97,93 @@ const WritePage = () => {
     };
 
     return (
-        <div className="container mx-auto w-[95%] py-8 px-4">
-            <h1 className="text-3xl font-bold mb-6 text-center">
-                {t("Write Article")}
-            </h1>
+      <div className="container mx-auto w-[95%] py-8 px-4">
+        <h1 className="text-3xl font-bold mb-6 text-center">
+          {t("Write Article")}
+        </h1>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="flex flex-col gap-4">
-                    <input
-                        type="text"
-                        id="name"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        placeholder={t("ArticleName")}
-                        className="w-full p-2 focus:outline-none focus:ring-0 border-b border-gray-200"
-                        required
-                    />
-                    <input
-                        type="text"
-                        id="description"
-                        value={description}
-                        onChange={(e) => setDescription(e.target.value)}
-                        placeholder={t("Description")}
-                        className="w-full p-2 focus:outline-none focus:ring-0 border-b border-gray-200"
-                        required
-                    />
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="flex flex-col gap-4">
+            <input
+              type="text"
+              id="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder={t("ArticleName")}
+              className="w-full p-2 focus:outline-none focus:ring-0 border-b border-gray-200"
+              required
+            />
+            <input
+              type="text"
+              id="description"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              placeholder={t("Description")}
+              className="w-full p-2 focus:outline-none focus:ring-0 border-b border-gray-200"
+              required
+            />
 
-                    {/* IMAGE UPLOAD SECTION */}
-                    <div className="flex flex-col gap-2">
-                        <label htmlFor="file_image" className="text-sm font-medium">
-                            {t("ArticleFaceImage")}
-                        </label>
+            {/* IMAGE UPLOAD SECTION */}
+            <div className="flex flex-col gap-2">
+              <label htmlFor="file_image" className="text-sm font-medium">
+                {t("ArticleFaceImage")}
+              </label>
 
-                        {image && (
-                            <div>
-                                <img
-                                    src={`data:${imageContentType};base64,${image}`}
-                                    alt="Preview"
-                                    className="max-h-28 object-contain rounded border"
-                                />
-                                <div className="text-sm text-red-600 flex justify-between items-center mt-1">
-                                    <span>{imageContentType}, {byteSize(image)}</span>
-                                    <button
-                                        type="button"
-                                        onClick={clearInputImage}
-                                        className="text-gray-500 hover:text-red-500"
-                                    >
-                                        <FontAwesomeIcon icon={faTimes}/>
-                                    </button>
-                                </div>
-                            </div>
-                        )}
+              {image && (
+                <div>
+                  <img
+                    src={`data:${imageContentType};base64,${image}`}
+                    alt="Preview"
+                    className="max-h-28 object-contain rounded border"
+                  />
+                  <div className="text-sm text-red-600 flex justify-between items-center mt-1">
+                    <span>
+                      {imageContentType}, {byteSize(image)}
+                    </span>
+                    <button
+                      type="button"
+                      onClick={clearInputImage}
+                      className="text-gray-500 hover:text-red-500"
+                    >
+                      <FontAwesomeIcon icon={faTimes} />
+                    </button>
+                  </div>
+                </div>
+              )}
 
-                        <input
-                            type="file"
-                            id="file_image"
-                            accept="image/*"
-                            onChange={setFileData}
-                            ref={fileInputRef}
-                            className="file:mr-4 file:py-2 file:px-4
+              <input
+                type="file"
+                id="file_image"
+                accept="image/*"
+                onChange={setFileData}
+                ref={fileInputRef}
+                className="file:mr-4 file:py-2 file:px-4
                file:rounded-md file:border-0
                file:text-sm file:font-semibold
-               file:bg-blue-50 file:text-blue-700
-               hover:file:bg-blue-100 transition"
-                        />
-                    </div>
-                </div>
+               file:bg-[#021321] file:text-white
+               hover:file:bg-[#021321d2] transition file:cursor-pointer"
+              />
+            </div>
+          </div>
 
-                <div>
-                    <div
-                        ref={editorRef}
-                        className="bg-white border rounded-md shadow-sm"
-                        style={{minHeight: "250px"}}
-                    />
-                </div>
+          <div>
+            <div
+              ref={editorRef}
+              className="bg-white border rounded-md shadow-sm"
+              style={{ minHeight: "250px" }}
+            />
+          </div>
 
-                <div className="text-center">
-                    <button
-                        type="submit"
-                        className="bg-blue-600 text-white px-6 py-2 rounded-md shadow hover:bg-blue-700 transition duration-200 cursor-pointer"
-                    >
-                        {t("Save")}
-                    </button>
-                </div>
-            </form>
-        </div>
+          <div className="text-center">
+            <button
+              type="submit"
+              className="bg-[#021321] text-white px-10 py-2 rounded-md shadow hover:bg-[#021321d2] transition duration-200 cursor-pointer"
+            >
+              {t("Save")}
+            </button>
+          </div>
+        </form>
+      </div>
     );
 };
 
