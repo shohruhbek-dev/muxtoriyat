@@ -2,22 +2,26 @@ import React, { useEffect, useState } from "react";
 import { getCategoriesImagesData } from "../../services/source";
 import { FiSearch } from "react-icons/fi";
 import { IoIosArrowBack, IoIosArrowForward, IoMdClose } from "react-icons/io";
-import {useTranslation} from "react-i18next";
+import { useTranslation } from "react-i18next";
+import ImageLoader from "../../components/Spinner/ImageLoader";
+import { EmptyComponent } from "../../components/EmptyData";
 
 const Images = () => {
   const [data, setData] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const {t} = useTranslation();
+  const { t } = useTranslation();
+  const [loading, setLoading] = useState(true);
 
   async function fetchData() {
     const result = await getCategoriesImagesData(`categoryId.equals=1003`);
     setData(result);
+    setLoading(false);
   }
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [loading]);
 
   const openModal = (index) => {
     setCurrentIndex(index);
@@ -53,7 +57,8 @@ const Images = () => {
       </div>
 
       <h1 className="font-bold text-3xl text-[#021321]"> {t("Images")} </h1>
-
+      {loading && <ImageLoader />}
+      {!data.length > 0 && !loading && <EmptyComponent />}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
         {data.length > 0 &&
           data.map((item, i) => (

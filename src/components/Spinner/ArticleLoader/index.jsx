@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import ContentLoader from "react-content-loader";
 
-const Spinner = ({
+const ArticleLoader = ({
   heading = { width: 140, height: 24 },
   row = 2,
   column = 5,
@@ -98,4 +98,4 @@ const Spinner = ({
   );
 };
 
-export default Spinner;
+export default ArticleLoader;

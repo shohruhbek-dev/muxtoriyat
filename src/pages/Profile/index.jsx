@@ -12,6 +12,7 @@ import {
   postProfileData,
 } from "../../services/source";
 import {useTranslation} from "react-i18next";
+import ProfileLoader from "../../components/Spinner/ProfileLoader";
 
 const Profile = () => {
   const [userInfo, setUserInfo] = useState({});
@@ -137,8 +138,8 @@ const Profile = () => {
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center h-[400px]">
-        <p>Yuklanmoqda...</p>
+      <div className="flex justify-end items-end w-full mt-5">
+        <ProfileLoader />
       </div>
     );
   }
@@ -184,7 +185,7 @@ const Profile = () => {
 
             <button
               onClick={handleDataEdit}
-              className="text-[#514EF3] hover:underline flex items-center gap-1"
+              className="text-[#021321] hover:underline flex items-center gap-1 cursor-pointer"
             >
               <BiEditAlt size={18} />
               {t("Edit")}
@@ -270,7 +271,7 @@ const Profile = () => {
             </h3>
             <button
               onClick={() => setIsPasswordEditing(true)}
-              className="text-[#514EF3] hover:underline flex items-center gap-1"
+              className="text-[#021321] hover:underline flex items-center gap-1 cursor-pointer"
             >
               <BiEditAlt size={18} />
               {t("Edit")}
