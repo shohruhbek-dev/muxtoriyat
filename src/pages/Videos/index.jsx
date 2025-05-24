@@ -10,6 +10,8 @@ import { IoCalendarOutline } from "react-icons/io5";
 import { FaHandsClapping } from "react-icons/fa6";
 import VideoModal from "../../components/VideoModal";
 import PaginationComponent from "../../components/Pagination";
+import { EmptyComponent } from "../../components/EmptyData";
+import ArticleLoader from "../../components/Spinner/ArticleLoader";
 
 export default function Videos() {
   const [data, setData] = useState([]);
@@ -19,6 +21,7 @@ export default function Videos() {
   const [selectedUrl, setSelectedUrl] = useState(null);
   const [likedVideos, setLikedVideos] = useState([]);
   const [viewedVideos, setViewedVideos] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   async function fetchData(currentPage) {
     const result = await getCategoriesVideosData(
@@ -27,6 +30,7 @@ export default function Videos() {
     setData(result.data);
     setData(result.data);
     setPageSize(result.headers["x-total-count"]);
+    setLoading(true)
   }
 
   // Load liked and viewed videos from localStorage on component mount
@@ -83,7 +87,7 @@ export default function Videos() {
 
   useEffect(() => {
     fetchData(currentPage);
-  }, [currentPage, limit]);
+  }, [currentPage, limit, loading]);
 
   return (
     <div className="container mx-auto w-[95%] sm:w-full lg:w-[95%] flex gap-4 sm:gap-10 flex-col">
@@ -103,6 +107,9 @@ export default function Videos() {
       <h1 className="font-bold text-xl sm:text-3xl text-[#021321]">
         Video gallereya
       </h1>
+      {loading && <ArticleLoader />}
+      {!data.length > 0 && !loading && <EmptyComponent />}
+
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
         {data?.map((item, i) => (
           <div key={i} className="group relative cursor-pointer">
@@ -168,13 +175,15 @@ export default function Videos() {
           </div>
         ))}
       </div>
-      <PaginationComponent
-        currentPage={currentPage + 1}
-        totalItems={pageSize}
-        pageSize={limit}
-        onPageChange={(page) => setCurrentPage(page - 1)}
-        onPageSizeChange={(size) => setLimit(size)}
-      />
+      {!loading && (
+        <PaginationComponent
+          currentPage={currentPage + 1}
+          totalItems={pageSize}
+          pageSize={limit}
+          onPageChange={(page) => setCurrentPage(page - 1)}
+          onPageSizeChange={(size) => setLimit(size)}
+        />
+      )}
 
       <VideoModal
         url={selectedUrl}

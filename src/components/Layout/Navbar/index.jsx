@@ -58,8 +58,8 @@ function Nav() {
 
   return (
     <header className={clsx(cn["header"])}>
-      <Link to={"/"}>
-        <img src={logo} alt="logo" />
+      <Link to="/" className="inline-block w-auto max-w-[120px]">
+        <img src={logo} alt="logo" className="w-full h-auto" />
       </Link>
 
       <div
@@ -83,19 +83,35 @@ function Nav() {
           }
         )}
       >
-        <ul className="flex flex-col items-start lg:flex-row mt-24 lg:mt-0 gap-8 lg:items-center lg:justify-end pl-12 lg:pl-0">
+        <ul className="flex flex-col items-start lg:flex-row mt-24 ml-2 lg:mt-0 gap-8 lg:items-center lg:justify-end pl-12 lg:pl-0">
           <IoCloseSharp
             className="absolute top-8 right-8 cursor-pointer lg:hidden"
             size={32}
             onClick={() => setIsMenuOpen(false)}
           />
           <Link to={"/"}> {t("main")} </Link>
-          <Link to={"/history"}> {t("history")} </Link>
+          <Link
+            to={"/history"}
+            className="block w-32 truncate whitespace-nowrap overflow-hidden"
+          >
+            {" "}
+            {t("history")}{" "}
+          </Link>
           <Link to={"/articles"}>{t("articles")}</Link>
-          <Link to={"/members"}>{t("govermentMembers")}</Link>
-          <SourcesComponent/>
+          <Link
+            to={"/members"}
+            className="block w-32 truncate whitespace-nowrap overflow-hidden"
+          >
+            {t("govermentMembers")}
+          </Link>
+          <SourcesComponent />
           <MediaComponent />
-          <Link to={"/write"}>{t("write")}</Link>
+          <Link
+            to={"/write"}
+            className="block w-32 truncate whitespace-nowrap overflow-hidden"
+          >
+            {t("write")}
+          </Link>
           <div className={clsx(cn["lan"])}>
             <ul className="flex gap-4">
               <li>

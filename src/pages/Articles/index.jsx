@@ -6,8 +6,9 @@ import { FiSearch, FiEye } from "react-icons/fi";
 import { FaHandsClapping } from "react-icons/fa6";
 import { IoCalendarOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
-import Spinner from "../../components/Spinner";
 import { useTranslation } from "react-i18next";
+import { EmptyComponent } from "../../components/EmptyData";
+import ArticleLoader from "../../components/Spinner/ArticleLoader";
 
 function Articles() {
   const [data, setData] = useState([]);
@@ -88,7 +89,8 @@ function Articles() {
       <h1 className="font-bold text-xl sm:text-3xl text-[#021321]">
         {t("Articles")}
       </h1>
-      {loading && <Spinner />}
+      {loading && <ArticleLoader />}
+      {!data.length > 0 && !loading && <EmptyComponent />}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
         {data?.map((item, i) => (
           <div key={i} className="group relative cursor-pointer">
@@ -101,9 +103,7 @@ function Articles() {
                 />
               </div>
               <div className="mt-2">
-                <p className="text-lg font-bold mb-1">
-                  {item?.name}
-                </p>
+                <p className="text-lg font-bold mb-1">{item?.name}</p>
                 <h3 className="text-[17px] text-[#191919]">
                   {item?.description}
                 </h3>
@@ -142,6 +142,7 @@ function Articles() {
           </div>
         ))}
       </div>
+
       {!loading && (
         <PaginationComponent
           currentPage={currentPage + 1}
