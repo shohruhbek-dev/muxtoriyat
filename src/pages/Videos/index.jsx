@@ -87,7 +87,7 @@ export default function Videos() {
 
   useEffect(() => {
     fetchData(currentPage);
-  }, [currentPage, limit, loading]);
+  }, [currentPage, limit]);
 
   return (
     <div className="container mx-auto w-[95%] sm:w-full lg:w-[95%] flex gap-4 sm:gap-10 flex-col">

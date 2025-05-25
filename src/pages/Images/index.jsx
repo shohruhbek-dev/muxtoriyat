@@ -21,7 +21,7 @@ const Images = () => {
 
   useEffect(() => {
     fetchData();
-  }, [loading]);
+  }, []);
 
   const openModal = (index) => {
     setCurrentIndex(index);
