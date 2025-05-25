@@ -83,7 +83,7 @@ function Nav() {
           }
         )}
       >
-        <ul className="flex flex-col items-start lg:flex-row mt-24 ml-2 lg:mt-0 gap-8 lg:items-center lg:justify-end pl-12 lg:pl-0">
+        <ul className="flex flex-col items-start lg:flex-row mt-24 ml-2 lg:mt-0 gap-4 xl:gap-8 lg:items-center lg:justify-end pl-12 lg:pl-0">
           <IoCloseSharp
             className="absolute top-8 right-8 cursor-pointer lg:hidden"
             size={32}
@@ -100,7 +100,7 @@ function Nav() {
           <Link to={"/articles"}>{t("articles")}</Link>
           <Link
             to={"/members"}
-            className="block w-32 truncate whitespace-nowrap overflow-hidden"
+            className="block w-35 truncate whitespace-nowrap overflow-hidden"
           >
             {t("govermentMembers")}
           </Link>
