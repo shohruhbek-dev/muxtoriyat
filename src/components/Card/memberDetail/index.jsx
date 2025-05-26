@@ -18,7 +18,7 @@ function MemberDetail() {
   return (
     <>
       <BackButton />
-      <div className="memberDetail w-[50%] mt-[20px] m-auto  p-6">
+      <div className="memberDetail w-[60%] mt-[20px] m-auto  p-6">
         <div className="flex flex-row items-center mb-4  gap-6">
           <img
             src={img}

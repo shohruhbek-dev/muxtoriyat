@@ -11,7 +11,7 @@ import ScrollToTopButton from "../../components/ScrollToTopBtn";
 function History() {
   const { t } = useTranslation();
   return (
-    <div className=" history p-[40px]">
+    <div className=" history p-[40px] w-[60%] m-auto">
       <h1
         className={`${clsx(
           cn["headerSpan"]
