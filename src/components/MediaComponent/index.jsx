@@ -27,7 +27,7 @@ function MediaComponent() {
       onChange={handleChange}
       className="outline-0 w-[100px] truncate bg-transparent text-white py-1"
     >
-      <option className="truncate" value="">
+      <option className="truncate bg-black" value="">
         {t("media")}
       </option>
       {data?.map((item, index) => (

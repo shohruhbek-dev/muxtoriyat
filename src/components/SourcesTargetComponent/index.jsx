@@ -25,7 +25,7 @@ function TargetComponent() {
 
   useEffect(() => {
     fetchData(currentPage);
-  }, [currentPage, limit]);
+  }, [currentPage, limit, item]);
 
   return (
     <div className="px-6 py-10">

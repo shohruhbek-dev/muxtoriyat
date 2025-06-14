@@ -28,9 +28,8 @@ export default function Videos() {
       `categoryId.equals=1002&page=${currentPage}&size=${limit}`
     );
     setData(result.data);
-    setData(result.data);
     setPageSize(result.headers["x-total-count"]);
-    setLoading(true)
+    setLoading(false)
   }
 
   // Load liked and viewed videos from localStorage on component mount
