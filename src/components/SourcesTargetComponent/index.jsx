@@ -60,8 +60,11 @@ function TargetComponent() {
                                 rel="noopener noreferrer"
                                 className="w-full mb-4"
                             >
-                                <p className="font-serif text-sm text-gray-700 mt-1">
+                                <p className="font-[Source_Serif_Pro] text-sm text-gray-600 mt-1">
                                     {book.name}
+                                </p>
+                                <p className="font-[Source_Serif_Pro] text-sm bold text-gray-700 mt-1">
+                                    {book.description}
                                 </p>
                             </a>
                         </div>

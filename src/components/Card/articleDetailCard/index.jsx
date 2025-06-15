@@ -119,16 +119,17 @@ function ArticleDetail() {
                         <p className="font-normal text-[20px] text-[#6B6B6B] mt-3">
                             {data?.description}
                         </p>
+                        <br/>
                         <div className="flex gap-4">
                             <div className="flex gap-1 items-center">
                                 <div className="w-[32px] h-[32px] bg-red-500 rounded-full">
                                     <img
                                         src={data?.authorImg ? data?.authorImg : userImg}
-                                        alt={data?.createdBy}
+                                        alt={data?.author.firstName}
                                         className="w-full h-full "
                                     />
                                 </div>
-                                <p className="font-bold text-[16px]">{data?.createdBy}</p>
+                                <p className="font-bold text-[16px]">{data?.author.firstName}</p>
                             </div>
                             <span className="flex items-center gap-1 text-[#6B6B6B] text-[16px]">
                 {new Date(data?.createdDate).toLocaleDateString("en-US", {
