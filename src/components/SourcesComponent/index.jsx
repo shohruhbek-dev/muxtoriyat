@@ -27,20 +27,19 @@ function SourcesComponent() {
   }, []);
 
   return (
-      <select
-          onChange={handleChange}
-          value=""
-          className="outline-0 w-[120px] truncate bg-transparent text-white py-1 cursor-pointer"
-      >
-        <option className="truncate bg-black" value="" disabled hidden>
-          {t("Sources")}
+    <select
+      onChange={handleChange}
+      className="outline-0 w-[150px] truncate bg-transparent text-white py-1 cursor-pointer "
+    >
+      <option className="truncate bg-black" value="">
+        {t("Sources")}
+      </option>
+      {data?.map((item, index) => (
+        <option className="truncate bg-black" key={index} value={item.id}>
+          {item.name}
         </option>
-        {data?.map((item, index) => (
-            <option className="truncate bg-black" key={index} value={item.id}>
-              {item.name}
-            </option>
-        ))}
-      </select>
+      ))}
+    </select>
   );
 }
 
