@@ -23,19 +23,20 @@ function MediaComponent() {
   }, []);
 
   return (
-    <select
-      onChange={handleChange}
-      className="outline-0 w-[100px] truncate bg-transparent text-white py-1"
-    >
-      <option className="truncate bg-black" value="">
-        {t("media")}
-      </option>
-      {data?.map((item, index) => (
-        <option className="truncate bg-black" key={index} value={item.name}>
-          {item.name}
+      <select
+          onChange={handleChange}
+          value=""
+          className="outline-0 w-[90px] truncate bg-transparent text-white py-1 cursor-pointer"
+      >
+        <option className="truncate bg-black" value="" disabled hidden>
+          {t("media")}
         </option>
-      ))}
-    </select>
+        {data?.map((item, index) => (
+            <option className="truncate bg-black" key={index} value={item.name}>
+              {item.name}
+            </option>
+        ))}
+      </select>
   );
 }
 
