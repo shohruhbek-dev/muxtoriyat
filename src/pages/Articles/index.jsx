@@ -23,7 +23,7 @@ function Articles() {
     const [tempSearch, setTempSearch] = useState(null);
 
     async function fetchData(currentPage) {
-        var params = `page=${currentPage}&size=${limit}&visibility.equals=PUBLIC`;
+        var params = `page=${currentPage}&size=${limit}`;
         if (search != null && search !== "")
             params += `&name.contains=${search}`;
         const result = await getArticles(params);

@@ -33,7 +33,6 @@ function TargetComponent() {
             <BackButton/>
             <div className="mx-auto my-10 px-6 py-10 w-[80%]">
                 <h1 className="font-bold text-xl sm:text-3xl text-[#021321]">{item?.name}</h1>
-                <br/>
                 {loading && <ArticleLoader/>}
                 {!data.length > 0 && !loading && <EmptyComponent/>}
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
