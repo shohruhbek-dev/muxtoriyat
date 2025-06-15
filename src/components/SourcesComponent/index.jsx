@@ -14,6 +14,7 @@ function SourcesComponent() {
     if (selectedItem) {
       // navigate to new route and pass item via state
       navigate("/sources", { state: { item: selectedItem } });
+      window.location.reload();
     }
   };
 
