@@ -199,7 +199,7 @@ function MembersSec({
         )}
         {subheading && (
           <p
-            className={`font-poppins font-medium text-2xl text-left lg:text-right text-[#2D2D2D] space-y-2`}
+            className={`textp font-poppins font-medium text-xl text-left lg:text-right text-[#2D2D2D] space-y-2`}
           >
             {t(`${subheading}`)}
           </p>

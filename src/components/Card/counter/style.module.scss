@@ -10,32 +10,49 @@
 
     span {
         color: #021321;
-        font-size: 72px;
+        font-size: 48px;
         font-weight: 400;
+        font-family: Unbounded;
+        font-weight: 400;
+        line-height: 86.54px;
+        letter-spacing: 0%;
+        text-align: center;
+        vertical-align: middle;
 
     }
 
     p {
-        color: #4A4A4A;
-        font-size: 32px;
+        color: #021321;
+        font-size: 24px;
         font-weight: 500;
+        font-family: Poppins;
+        font-weight: 500;
+        line-height: 40.73px;
+        letter-spacing: 0%;
+        text-align: center;
+        vertical-align: middle;
+
 
     }
 
     @media screen and (max-width: '820pz') {
-        span{
+        span {
             font-size: 56px;
         }
-        p{
+
+        p {
             font-size: 28px;
         }
     }
+
     @media screen and (max-width: '690px') {
         padding: 20px 0;
-        span{
+
+        span {
             font-size: 42px;
         }
-        p{
+
+        p {
             font-size: 24px;
         }
     }

@@ -11,7 +11,7 @@ function CountersSec() {
   return (
     <div className={clsx(cn["bigcounters"])} ref={ref}>
       <div className={clsx(cn["countersText"])}>
-        <h1 className="font-poppins font-medium text-[64px] leading-none tracking-normal align-middle">
+        <h1 className="font-poppins font-medium text-[64px] leading-none tracking-normal align-middle text-[#021321]">
           {t("countersSecHeader")}
         </h1>
         <p className="font-poppins font-normal text-[22.7px] leading-[36px] tracking-normal align-middle">

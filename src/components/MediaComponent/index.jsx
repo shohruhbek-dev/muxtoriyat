@@ -26,7 +26,7 @@ function MediaComponent() {
       <select
           onChange={handleChange}
           value=""
-          className="outline-0 w-[90px] truncate bg-transparent text-white py-1 cursor-pointer"
+          className="outline-0 w-[75px] truncate bg-transparent text-white py-1 cursor-pointer"
       >
         <option className="truncate bg-black" value="" disabled hidden>
           {t("media")}

@@ -7,10 +7,10 @@ function SecondTextCard() {
   const { t } = useTranslation();
   return (
     <div className={clsx(cn["SecondTextCard"])}>
-      <h3 className="font-[Poppins] font-medium text-[100px]">
+      <h3 className="font-[Poppins] font-medium text-[100px] text-[#021321]">
         {t("secondTextCardHeader1")}
       </h3>
-      <h3 className="font-[Poppins] font-medium text-[100px] ">
+      <h3 className="font-[Poppins] font-medium text-[100px] text-[#021321] ">
         {t("secondTextCardHeader2")}
       </h3>
 

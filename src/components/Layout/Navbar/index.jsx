@@ -108,7 +108,7 @@ function Nav() {
           <MediaComponent />
           <Link
             to={"/write"}
-            className="block w-32 truncate whitespace-nowrap overflow-hidden"
+            className="block w-32 truncate whitespace-nowrap overflow-hidden" 
           >
             {t("write")}
           </Link>

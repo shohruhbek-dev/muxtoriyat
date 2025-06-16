@@ -43,8 +43,18 @@ const Images = () => {
   };
 
   return (
-    <div className="container mx-auto w-[90%] lg:w-[90%] flex gap-10 flex-col">
-      <br/>
+    <div className="container mx-auto w-full lg:w-[95%] flex gap-10 flex-col">
+      <div className="flex items-center rounded-md bg-[#f6f4f4] pl-3 w-[30%] my-5">
+        <FiSearch size={24} className="text-gray-500" />
+        <input
+          id="search"
+          name="search"
+          type="text"
+          placeholder={t("Search")}
+          className="inline-block grow py-4 px-3 text-gray-900 placeholder:text-gray-400 focus:outline-none sm:text-sm"
+        />
+      </div>
+
       <h1 className="font-bold text-3xl text-[#021321]"> {t("Images")} </h1>
       {loading && <ImageLoader />}
       {!data.length > 0 && !loading && <EmptyComponent />}
@@ -63,19 +73,11 @@ const Images = () => {
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="mt-2">
-                <p className="text-sm font-normal text-[#6B6B6B] mb-1">
-                  {item?.name}
-                </p>
-                <h3 className="text-[17px] text-[#191919]">
-                  {item?.description}
-                </h3>
-              </div>
+
             </div>
           ))}
       </div>
 
-      {/* Modal */}
       {isModalOpen && (
         <div
           className="fixed inset-0 z-50 bg-[#000000e7] bg-opacity-80 flex items-center justify-center"

@@ -60,6 +60,7 @@ footer {
         justify-content: space-between;
         align-items: center;
         padding: 40px;
+        padding-right: 80px;
 
         ul {
             display: flex;
@@ -68,11 +69,13 @@ footer {
 
 
             li {
-                background: #18181C;
-                padding: 15px;
-                border-radius: 21px;
+                a {
 
-                color: #FFFFFF;
+                    background: #18181C;
+                    padding: 10px 12px;
+                    border-radius: 50%;
+                    color: #FFFFFF;
+                }
             }
 
         }
@@ -81,7 +84,7 @@ footer {
             flex-wrap: wrap;
             row-gap: 24px;
 
-            ul{
+            ul {
                 flex-wrap: wrap;
             }
         }
