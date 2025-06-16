@@ -7,6 +7,7 @@ const Counter = (props) => {
     return (
         <div className={clsx(cn['Counter'])}>
             <CountUp
+            className='count font-unbounded text-[18px]'
                 end={end}
                 start={start}
                 duration={duration}

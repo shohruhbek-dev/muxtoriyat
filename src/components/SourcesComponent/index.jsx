@@ -3,7 +3,7 @@ import { getCategories } from "../../services/source";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
-function SourcesComponent() {
+function  SourcesComponent() {
   const [data, setData] = useState();
   const { t } = useTranslation();
   const navigate = useNavigate(); // initialize navigate
@@ -30,7 +30,7 @@ function SourcesComponent() {
   return (
     <select
       onChange={handleChange}
-      className="outline-0 w-[150px] truncate bg-transparent text-white py-1 cursor-pointer "
+      className="outline-0 w-[110px] truncate bg-transparent text-white py-1 cursor-pointer "
     >
       <option className="truncate bg-black" value="">
         {t("Sources")}

@@ -12,13 +12,16 @@ ol.custom-list {
 }
 
 ol.custom-list li {
-  list-style-type: none;  /* Remove default numbering */
+  list-style-type: none;
+  /* Remove default numbering */
   counter-increment: list-counter;
 }
 
 ol.custom-list li::before {
-  content: counter(list-counter) ". ";  /* Display the number */
-  color: #000; /* Customize color */
+  content: counter(list-counter) ". ";
+  /* Display the number */
+  color: #000;
+  /* Customize color */
 }
 
 
@@ -26,6 +29,7 @@ ol.custom-list li::before {
   0% {
     transform: translateX(0%);
   }
+
   100% {
     transform: translateX(-50%);
   }
@@ -41,7 +45,11 @@ ol.custom-list li::before {
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
+
 @theme {
   --font-poppins: "Poppins", sans-serif;
   --font-inter: "Inter", sans-serif;
+  --font-unbounded: "Unbounded", cursive;
+  --font-unbounded: "Source Serif Pro", serif;
+
 }

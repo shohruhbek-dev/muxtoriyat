@@ -73,7 +73,6 @@ function Articles() {
 
   return (
     <div className="container mx-auto w-[95%] sm:w-full lg:w-[95%] flex gap-4 sm:gap-10 flex-col">
-      {/* Qidiruv input */}
       <div className="flex items-center rounded-md bg-[#f6f4f4] pl-3 w-full md:w-[30%] my-2 sm:my-5">
         <FiSearch size={24} className="text-gray-500" />
         <input
@@ -102,9 +101,10 @@ function Articles() {
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="mt-2">
-                <p className="text-lg font-bold mb-1">{item?.name}</p>
-                <h3 className="text-[17px] text-[#191919]">
+              {/* <div>img</div> */}
+              <div className="mt-6">
+                <p className="text-[20px] font-bold mb-1 text-[#242424] font-Inter ">{item?.name}</p>
+                <h3 className="text-[14px] text-[#6B6B6B]">
                   {item?.description}
                 </h3>
                 <p className="text-sm font-normal text-[#6B6B6B] mb-1">

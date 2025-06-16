@@ -105,19 +105,17 @@ function ArticleDetail() {
   }, [id]);
 
   return (
-    <div className="container mx-auto w-[95%]">
-      {/* go back */}
+    <div className="container mx-auto ">
       <BackButton />
-      {/* content part */}
-      <div className="flex flex-col gap-4 w-full md:w-[80%] mx-auto">
+      <div className="flex flex-col gap-4 w-[60%] mx-auto font-[sans-serif]">
         {data && (
           <div className="" key={data.id}>
-            <h1 className="font-bold text-4xl leading-10">{data?.name}</h1>
-            <p className="font-normal text-[20px] text-[#6B6B6B] mt-3">
+            <h1 className="font-bold text-4xl leading-10 pt-10 font-inter">{data?.name}</h1>
+            <p className="font-normal text-[20px] mt-7 mb-7  text-[#6B6B6B] ">
               {data?.description}
             </p>
-            <div className="flex gap-4">
-              <div className="flex gap-1 items-center">
+            <div className="flex gap-4 ">
+              <div className="flex gap-1  items-center">
                 <div className="w-[32px] h-[32px] bg-red-500 rounded-full">
                   <img
                     src={data?.authorImg ? data?.authorImg : userImg}
@@ -125,7 +123,7 @@ function ArticleDetail() {
                     className="w-full h-full "
                   />
                 </div>
-                <p className="font-bold text-[16px]">{data?.createdBy}</p>
+                <p className="font-bold  text-[16px]">{data?.author.firstName}</p>
               </div>
               <span className="flex items-center gap-1 text-[#6B6B6B] text-[16px]">
                 {new Date(data?.createdDate).toLocaleDateString("en-US", {
@@ -138,17 +136,15 @@ function ArticleDetail() {
             <div className="border-t border-b border-[#F2F2F2] flex items-center justify-between py-4 mb-10 mt-5">
               <div className="flex items-center gap-4">
                 <button
-                  className={`flex items-center gap-1 cursor-pointer border-0 outline-0 bg-transparent ${
-                    isArticleLiked(id) ? "text-black" : "text-[#919191]"
-                  }`}
+                  className={`flex items-center gap-1 cursor-pointer border-0 outline-0 bg-transparent ${isArticleLiked(id) ? "text-black" : "text-[#919191]"
+                    }`}
                   onClick={() => handleLike(id)}
                 >
                   <FaHandsClapping /> {data?.likes}
                 </button>
                 <span
-                  className={`flex items-center gap-1 ${
-                    isArticleViewed(id) ? "text-black" : "text-[#919191]"
-                  }`}
+                  className={`flex items-center  gap-1 ${isArticleViewed(id) ? "text-black" : "text-[#919191]"
+                    }`}
                 >
                   <FiEye /> {data?.views}
                 </span>
@@ -166,7 +162,7 @@ function ArticleDetail() {
             </div>
             <div className="mt-7">
               <div
-                className="text-[17px] text-[#191919]"
+                className="text text-[17px] font-[Source Serif Pro]  text-[#191919]"
                 dangerouslySetInnerHTML={{ __html: data?.content }}
               />
             </div>

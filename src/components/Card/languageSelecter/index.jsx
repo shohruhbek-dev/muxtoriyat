@@ -45,7 +45,7 @@ const LanguageSelector = () => {
         <img
           src={currentLang.flag}
           alt={currentLang.code}
-          className="w-12 h-6 object-cover"
+          className="w-12 h-6 object-cover rounded-[3px]"
           loading="lazy"
         />
       </button>

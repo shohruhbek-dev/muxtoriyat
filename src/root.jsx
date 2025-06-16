@@ -35,7 +35,7 @@ function Root() {
 
   return (
     <>
-    <ScrollToTop />
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
@@ -55,7 +55,7 @@ function Root() {
               </ProtectedRoute>
             }
           />
-        <Route path="profile" element={<Profile />} />
+          <Route path="profile" element={<Profile />} />
         </Route>
 
         <Route path="/auth" element={token ? <Navigate to="/" /> : <Auth />} />

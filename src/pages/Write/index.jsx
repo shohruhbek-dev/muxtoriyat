@@ -98,12 +98,12 @@ const WritePage = () => {
 
     return (
       <div className="container mx-auto w-[95%] py-8 px-4">
-        <h1 className="text-3xl font-bold mb-6 text-center">
+        <h1 className="text-3xl font-bold mb-10 text-start">
           {t("Write Article")}
         </h1>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="flex flex-col gap-4">
+        <form onSubmit={handleSubmit} className="space-y-6 ">
+          <div className="flex flex-col gap-4 ">
             <input
               type="text"
               id="name"
