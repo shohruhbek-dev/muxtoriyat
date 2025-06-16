@@ -5,10 +5,12 @@ import {useLocation} from "react-router-dom";
 import ArticleLoader from "../Spinner/ArticleLoader/index.jsx";
 import {EmptyComponent} from "../EmptyData/index.jsx";
 import BackButton from "../BackButton/index.jsx";
+import {useTranslation} from "react-i18next";
 
 function TargetComponent() {
     const location = useLocation();
     const item = location.state?.item;
+    const {t} = useTranslation();
     const [data, setData] = useState([]);
     const [pageSize, setPageSize] = useState();
     const [currentPage, setCurrentPage] = useState(0);
@@ -32,7 +34,7 @@ function TargetComponent() {
         <>
             <BackButton/>
             <div className="mx-auto my-10 px-6 py-10 w-[80%]">
-                <h1 className="font-bold text-xl sm:text-3xl text-[#021321]">{item?.name}</h1>
+                <h1 className="font-bold text-xl sm:text-3xl text-[#021321]">{t(item?.name)}</h1>
                 <br/>
                 {loading && <ArticleLoader/>}
                 {!data.length > 0 && !loading && <EmptyComponent/>}
