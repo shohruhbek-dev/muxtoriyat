@@ -42,7 +42,7 @@ function TargetComponent() {
                     {data?.map((book, index) => (
                         <div
                             key={index}
-                            className="flex flex-col items-center text-center rounded-lg shadow-sm p-4 bg-white"
+                            className="flex flex-col items-center text-[17px] font-[Source Serif Pro] p-4"
                         >
                             <a
                                 href={book?.file.url}
@@ -62,10 +62,10 @@ function TargetComponent() {
                                 rel="noopener noreferrer"
                                 className="w-full mb-4"
                             >
-                                <p className="font-[Source_Serif_Pro] text-sm text-gray-600 mt-1">
+                                <p className="font-[Source_Serif_Pro] text-[17px] text-gray-600 mt-1">
                                     {book.name}
                                 </p>
-                                <p className="font-[Source_Serif_Pro] text-sm bold text-gray-700 mt-1">
+                                <p className="font-[Source_Serif_Pro] text-[17px] bold text-gray-700 mt-1">
                                     {book.description}
                                 </p>
                             </a>
