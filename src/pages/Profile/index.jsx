@@ -7,6 +7,7 @@ import { BiEditAlt } from "react-icons/bi";
 import {Link, useNavigate} from "react-router-dom";
 import "./style.scss";
 import {
+  getMyArticlesCount,
   getProfileData,
   postPassword,
   postProfileData,
@@ -28,12 +29,14 @@ const Profile = () => {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const {t} = useTranslation();
-
+  const [myArticlesCount, setMyArticlesCount] = useState(0);
 
   const fetchData = async () => {
     try {
       const res = await getProfileData();
+      const count = await getMyArticlesCount();
       setUserInfo(res);
+      setMyArticlesCount(count);
       setLoading(false);
     } catch {
       toast.error("Ma'lumotlarni yuklashda xatolik yuz berdi.");
@@ -163,20 +166,20 @@ const Profile = () => {
             <h2 className="text-xl font-bold">{userInfo?.lastName}</h2>
           </div>
 
-          <Link
+          <div
             to={"/my-article"}
             className="flex justify-between w-full px-[30px] py-[24px] border-t border-b border-[#D7DDE8] text-[#021321] font-[Helvetica Neue] text-[18px] "
           >
             <h3 className="">{t("MyArticles")}</h3>
-            <p className="font-bold">50</p>
-          </Link>
-          <Link
+            <p className="font-bold">{myArticlesCount}</p>
+          </div>
+          <div
             to={"/my-top-article"}
             className="flex justify-between w-full px-[30px] py-[24px] border-b border-[#D7DDE8] text-[#021321] font-[Helvetica Neue] text-[18px] "
           >
             <h3 className="">{t("TheMostReadArticles")}</h3>
             <p className="font-bold">24</p>
-          </Link>
+          </div>
         </div>
 
         <div className="col-span-2 flex flex-col border border-[#EBEFF5] rounded-3xl p-10 text-[#021321]">

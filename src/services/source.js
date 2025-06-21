@@ -91,3 +91,16 @@ export const postArticle = async (articleData) => {
     },
   });
 }
+
+// get my articles count
+export const getMyArticlesCount = async () => {
+  const token = localStorage.getItem("token");
+
+  const response = await api.get(`/my-articles/count`, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  return response.data;
+};
