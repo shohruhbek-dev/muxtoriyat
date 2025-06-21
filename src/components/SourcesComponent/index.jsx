@@ -18,7 +18,7 @@ function  SourcesComponent() {
   };
 
   async function fetchData() {
-    const result = await getCategories("parentName.equals=Sources");
+    const result = await getCategories("parentName.equals=Sources&sort=order,asc");
     console.log(result);
     setData(result);
   }
