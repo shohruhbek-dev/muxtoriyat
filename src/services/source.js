@@ -104,3 +104,20 @@ export const getMyArticlesCount = async () => {
   });
   return response.data;
 };
+
+export const getArticlesCount = async () => {
+  const response = await api.get(`/view/articles/count?visibility.equals=PUBLIC`);
+  console.log(response);
+  return response.data;
+}
+
+export const getBooksCount = async () => {
+    const response = await api.get(`/view/sources/count?categoryId.equals=1005`);
+    return response.data;
+}
+
+export const getDocsCount = async () => {
+    const response = await api.get(`/view/sources/count?categoryId.equals=1006`);
+    return response.data;
+}
+
